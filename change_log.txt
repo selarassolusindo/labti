@@ -259,3 +259,11 @@ C:\xampp\htdocs\labti\app\views\pengumuman\index.php
 
 
 
+-------------------------------------------------------
+5. menu: Master - Mahasiswa, import data mahasiswa baru
+-------------------------------------------------------
+	referensi:
+	https://www.funtechsy.com/2020/07/import-excel-.html
+
+	library:
+	
