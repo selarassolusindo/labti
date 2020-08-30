@@ -158,6 +158,19 @@ C:\xampp\htdocs\labti\app\views\templates\navbar-main.php
 	hilangkan remark -->
 
 
+----------------------------------------------------------------
+98. ubah index.php, untuk keperluan test di labti.aimpglobal.com
+----------------------------------------------------------------
+C:\xampp\htdocs\labti\index.php
+	line: 57 - 69
+	tambah code
+
+	line: 71
+	// define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'production');
+
+	line: 72
+	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : $env);
+
 
 ----------------------------------------------------------------------------------
 99. ubah setting icon class di button "Tambah [function]" pada setiap form tambah,
