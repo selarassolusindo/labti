@@ -171,6 +171,10 @@ C:\xampp\htdocs\labti\index.php
 	line: 72
 	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : $env);
 
+create folder di C:\xampp\htdocs\labti\app\config
+	- production
+	- testing
+
 
 ----------------------------------------------------------------------------------
 99. ubah setting icon class di button "Tambah [function]" pada setiap form tambah,
