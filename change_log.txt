@@ -175,6 +175,13 @@ create folder di C:\xampp\htdocs\labti\app\config
 	- production
 	- testing
 
+isi masing-masing folder di atas (production & testing) dengan file:
+	- config.php
+	- database.php
+
+ubah masing-masing file database.php,
+	- sesuaikan dengan konfigurasi database masing-masing environment
+
 
 ----------------------------------------------------------------------------------
 99. ubah setting icon class di button "Tambah [function]" pada setiap form tambah,
