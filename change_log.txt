@@ -277,3 +277,8 @@ C:\xampp\htdocs\labti\app\views\pengumuman\index.php
 	models M_index.php
 	views V_index.php
 
+	tabel:
+	ALTER TABLE `labti`.`tbuser` ADD UNIQUE `NIM_TBUSER2` (`NIM_TBUSER`);
+
+
+
