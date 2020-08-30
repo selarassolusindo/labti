@@ -1,0 +1,7 @@
+# Checks to see if the user is attempting to access a valid file,
+# such as an image or css document, if this isn’t true it sends the
+# request to index.php
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule !.(js|gif|jpg|png|css|eot|svg|ttf|woff|woff2|map)$ index.php/$1 [L]

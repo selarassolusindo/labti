@@ -1,0 +1,229 @@
+8/25/2020
+=========
+request update:
+
+	- 1. ubah keterangan CDD: created, designed & developed by
+	  [x] - 3:00 PM 8/27/2020
+
+	- 2. menu: menu - data praktikum, sortir data
+	  ambil data terbaru
+	  order by id_praktikum desc
+	  [x] - 9:29 PM 8/29/2020
+
+	- 3. menu: Praktikum - Jadwal Praktikum, combo Praktikum dilengkapi kode_praktikum & semester
+	  [x] - 10:28 PM 8/29/2020
+
+	- menu: Master - Mahasiswa, import data mahasiswa baru
+	  format: excel
+	  location: button diletakkan di sebelah kanan button Tambah Master
+	  field: nim, nama_mahasiswa
+	  [ ] -
+
+	- history praktikum
+	  [ ] -
+
+	- view transkrip
+	  [ ] -
+
+	- dashboard,
+	  grafik: ambil data terbaru
+	  [ ] -
+
+	- 4. tambah modul menu: Master - Asisten
+	  [ ] -
+
+	- kelompok & penilaian
+	  [ ] -
+
+
+
+8:26 AM 8/26/2020
+=================
+ubah password,
+
+	- username: 1234554321
+	- role: admin
+	- old password:
+	  md5: be8ac573c3e50c238e7091ac2b2e700b
+	- new password:
+	  str: 1234554321
+	  md5: b0f8b3e58f093359fe1af416b5ea8ed6
+
+
+	- username: 0012038203
+	- role: dosen
+	- old password:
+	  md5: 5f0fd009e921a8c18327999c14776c0b
+	- new password:
+	  str: 1234554321
+	  md5: b0f8b3e58f093359fe1af416b5ea8ed6
+
+
+	- username: 1614321058
+	- role: mahasiswa
+	- old password:
+	  md5: e727a8d40cedf156a4d7ae50f71bfe36
+	- new password:
+	  str: 1234554321
+	  md5: b0f8b3e58f093359fe1af416b5ea8ed6
+
+
+
+3:01 PM 8/27/2020
+=================
+
+
+1. ubah keterangan CDD: created, designed & developed by,
+   ------------------------------------------------------
+C:\xampp\htdocs\labti\app\views\user\login.php
+	line: 45
+	<small>Created, designed & developed by</small><!-- <small>Create by <a href="#" target="_blank">INFORMATIKA UBHARA COMMUNITY </a>&copy; 2018.</small> -->
+
+	line: 48
+	<small><a href="#"><?php echo CDD ?></a> &copy; 2018-<?php echo date('Y') ?></small><!-- <small>Design & Developed By:<a href="#"> IUC_Vienzz</a></small> -->
+
+
+C:\xampp\htdocs\labti\app\config\constants.php
+	line: 87
+	define('CDD', 'Lab. TI Ubhara'); // cdd = created, designed & developed by
+
+
+C:\xampp\htdocs\labti\app\views\front.php
+	line: 27
+	<meta name="author" content="<?php echo CDD ?>"><!-- <meta name="author" content="IUC_Vienzz"> -->
+
+	line: 36
+	<meta name="DC.creator" content="<?php echo CDD ?>"/><!-- <meta name="DC.creator" content="IUC_Vienzz"/> -->
+
+	line: 37
+	<meta name="DC.publisher" content="<?php echo CDD ?>"/><!-- <meta name="DC.publisher" content="IUC_Vienzz"/> -->
+
+	line: 38
+	<meta name="DC.license" content="<?php echo CDD ?>"/><!-- <meta name="DC.license" content="IUC_Vienzz"/> -->
+
+	line: 98
+	<!-- <p class="copy-right">Create by <a href="https://www.facebook.com/InformatikaUbharaCommunity/">Informatika Ubhara Comunity</a> © 2018, Design & Developed By:<a href="#"> IUC_Vienzz</a></p> -->
+
+	line: 99
+	<p class="copy-right">Created, designed & developed by <a href="#"><?php echo CDD ?></a> © 2018-<?php echo date('Y') ?></p>
+
+
+C:\xampp\htdocs\labti\app\views\main.php
+	line: 15
+	<meta name="author" content="<?php echo CDD ?>"><!-- <meta name="author" content="IUC_Vienzz"> -->
+
+	line: 24
+	<meta name="DC.creator" content="<?php echo CDD ?>"/><!-- <meta name="DC.creator" content="IUC_Vienzz"/> -->
+
+	line: 25
+	<meta name="DC.publisher" content="<?php echo CDD ?>"/><!-- <meta name="DC.publisher" content="IUC_Vienzz"/> -->
+
+	line: 26
+	<meta name="DC.license" content="<?php echo CDD ?>"/><!-- <meta name="DC.license" content="IUC_Vienzz"/> -->
+
+	line: 182
+	<!-- <strong>Copyright</strong> SIM PRAKTIKUM - TEKNIK INFORMATIKA &copy; 2018, Design & Developed By:<a href="https://www.facebook.com/vienz.keren" target="blank"> IUC_Vienzz</a> -->
+
+	line: 183
+	Created, designed & developed by <a href="#"><?php echo CDD ?></a> © 2018-<?php echo date('Y') ?>
+
+
+
+-------------------------------------------
+2. menu: menu - data praktikum, sortir data
+-------------------------------------------
+C:\xampp\htdocs\labti\app\models\Praktikum_model.php
+	line: 10
+	var $order = array('ID_PRAKTIKUM' => 'DESC'); // var $order = array('ID_PRAKTIKUM' => 'ASC'); // default order
+
+
+
+-------------------------------------------------------------------------------------------
+3. menu: Praktikum - Jadwal Praktikum, combo Praktikum dilengkapi kode_praktikum & semester
+-------------------------------------------------------------------------------------------
+C:\xampp\htdocs\labti\app\views\jadwal\index-main.php
+	line: 71
+	<option value="<?php echo $row->KODE_PRAKTIKUM; ?>"><?php echo $row->NAMA_PRAKTIKUM . ' - ' . $row->KODE_PRAKTIKUM . ' - ' . $row->SMST_PRAKTIKUM; ?></option><!-- <option value="<?php echo $row->KODE_PRAKTIKUM; ?>"><?php echo $row->NAMA_PRAKTIKUM; ?></option> -->
+
+
+
+--------------------------------------
+4. tambah modul menu: Master - Asisten
+--------------------------------------
+C:\xampp\htdocs\labti\app\views\templates\navbar-main.php
+	line: 96
+	hilangkan remark <!--
+
+	line: 102
+	hilangkan remark -->
+
+
+
+----------------------------------------------------------------------------------
+99. ubah setting icon class di button "Tambah [function]" pada setiap form tambah,
+----------------------------------------------------------------------------------
+C:\xampp\htdocs\labti\app\views\praktikum\index-main.php
+	line: 132
+	text: '<i class="ti-plus"></i>Tambah Baru', // text: '<i class="ti-plus"> Tambah Baru</i>',
+
+
+C:\xampp\htdocs\labti\app\views\asisten\index.php
+	line: 123
+	text: '<i class="ti-plus"></i>Tambah Baru', // text: '<i class="ti-plus"> Tambah Baru</i>',
+
+
+C:\xampp\htdocs\labti\app\views\dosen\index.php
+	line: 147
+	text: '<i class="ti-plus"></i>Tambah Baru', // text: '<i class="ti-plus"> Tambah Baru</i>',
+
+
+C:\xampp\htdocs\labti\app\views\jadwal\index-main.php
+	line: 191
+	text: '<i class="ti-plus"></i>Tambah Jadwal', // text: '<i class="ti-plus"> Tambah Jadwal</i>',
+
+
+C:\xampp\htdocs\labti\app\views\mahasiswa\index.php
+	line: 102
+	text: '<i class="ti-plus"></i>Tambah Baru', // text: '<i class="ti-plus"> Tambah Baru</i>',
+
+
+C:\xampp\htdocs\labti\app\views\pembukaan-praktikum\index.php
+	line: 85
+	<!-- <button class="btn btn-grd-info btn-custom subm" type="submit" onclick="save(); return false;"><i class="ti-plus"> Tambah</i></button>  -->
+
+	line: 86
+	<button class="btn btn-grd-info btn-custom subm" type="submit" onclick="save(); return false;"><i class="ti-plus"></i>Tambah</button> 
+
+	line: 87
+	<!-- <button type="button" class="btn btn-grd-danger btn-custom" data-dismiss="modal">&nbsp;&nbsp;<i class="ti-na"> Batal</i>&nbsp;&nbsp;</button> -->
+
+	line: 88
+	<button type="button" class="btn btn-grd-danger btn-custom" data-dismiss="modal">&nbsp;&nbsp;<i class="ti-na"></i>Batal&nbsp;&nbsp;</button>
+
+	line: 115
+	text: '<i class="ti-plus"></i>Tambah Baru', // text: '<i class="ti-plus"> Tambah Baru</i>',
+
+
+C:\xampp\htdocs\labti\app\views\pembukaan-praktikum\tambah-data-praktikum.php
+	line: 195
+	<!-- <button class="btn btn-grd-info btn-custom" type="submit"><i class="ti-plus"> Tambah</i></button>  -->
+
+	line: 196
+	<button class="btn btn-grd-info btn-custom" type="submit"><i class="ti-plus"></i>Tambah</button> 
+
+	line: 312
+	<!-- <button class="btn btn-grd-info btn-custom" type="submit"><i class="ti-plus"> Ubah</i></button> -->
+
+	line: 313
+	<button class="btn btn-grd-info btn-custom" type="submit"><i class="ti-plus"></i>Ubah</button>
+
+	line: 373
+	text: '<i class="ti-plus"></i>Tambah Praktikum', // text: '<i class="ti-plus"> Tambah Praktikum</i>',
+
+
+C:\xampp\htdocs\labti\app\views\pengumuman\index.php
+	line: 127
+	text: '<i class="ti-plus"></i>Tambah Pengumuman', // text: '<i class="ti-plus"> Tambah Pengumuman</i>',
+
+
+
