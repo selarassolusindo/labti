@@ -30,10 +30,17 @@ request update:
 	  [ ] -
 
 	- 4. tambah modul menu: Master - Asisten
+	  tanpa gelar depan & gelar belakang
+	  tanpa combo kelas pagi atau sore
 	  [ ] -
 
 	- kelompok & penilaian
 	  [ ] -
+
+	- view - dosen
+	  [ ] -
+
+	- 
 
 
 
