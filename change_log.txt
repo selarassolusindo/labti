@@ -279,6 +279,17 @@ C:\xampp\htdocs\labti\app\views\pengumuman\index.php
 
 	tabel:
 	ALTER TABLE `labti`.`tbuser` ADD UNIQUE `NIM_TBUSER2` (`NIM_TBUSER`);
+	mencegah duplikasi NIM
+
+C:\xampp\htdocs\labti\app\views\mahasiswa\index.php
+	line: 41
+	modal input file excel
+
+	line: 108
+	button import excel
+
+	line: 171
+	function proses_import(){
 
 
 

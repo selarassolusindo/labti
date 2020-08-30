@@ -36,7 +36,7 @@
     </table>
 
     <form action="<?php echo site_url('c_index/import_excel') ?>" method="post" enctype="multipart/form-data">
-      <input type="file" name="file">
+      <input type="file" name="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
       <button type="submit">Submit</button>
     </form>
   </body>
