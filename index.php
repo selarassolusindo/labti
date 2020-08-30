@@ -60,7 +60,7 @@
 		 break;
 
 	 case "labti.aimpglobal.com":
-		 $env = "test";
+		 $env = "testing";
 		 break;
 
 	 default:
