@@ -266,4 +266,14 @@ C:\xampp\htdocs\labti\app\views\pengumuman\index.php
 	https://www.funtechsy.com/2020/07/import-excel-.html
 
 	library:
-	
+	https://github.com/PHPOffice/PHPExcel
+
+	copy content (folders & file)
+	dari C:\PHPExcel-1.8\Classes
+	ke C:\xampp\htdocs\labti\app\third_party
+
+	create:
+	controller C_index.php
+	models M_index.php
+	views V_index.php
+
