@@ -63,7 +63,6 @@
           </div>
          </div>
          <div class="modal-footer">
-            <button class="btn btn-primary waves-effect waves-light" type="submit">Import</button>
             <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Close</button>
          </div>
          </form>
@@ -188,29 +187,29 @@
        });
 
        $('#file').change(function(){
-           $('#form_input').submit();
-         });
+         $('#form_input').submit();
+       });
 
        $('#form_input').on('submit', function(event){
-                  event.preventDefault();
-                  $.ajax({
-                       url:"<?php echo site_url('c_index/import_excel') ?>",
-                       method:"POST",
-                       data:new FormData(this),
-                       contentType:false,
-                       processData:false,
-                       success:function(data){
-                         $('#large-Modal-input').modal('hide');
-                         reload_table();
-                         swal(
-                             'Berhasil!',
-                             'Data Mahasiswa telah diimport !',
-                             'success'
-                         );
-                            $('#file').val('');
-                       }
-                  });
-             });
+         event.preventDefault();
+         $.ajax({
+           url:"<?php echo site_url('mahasiswa/import_excel') ?>",
+           method:"POST",
+           data:new FormData(this),
+           contentType:false,
+           processData:false,
+           success:function(data){
+             $('#large-Modal-input').modal('hide');
+             reload_table();
+             swal(
+               'Berhasil!',
+               'Data Mahasiswa telah diimport !',
+               'success'
+             );
+             $('#file').val('');
+           }
+         });
+       });
 
 
    });
@@ -433,58 +432,5 @@
             }
         })
     }
-
-    function proses_import() {
-        var url;
-
-        var FILE = $('#file').val();
-
-        if (save_method == 'add') {
-            url = "<?php echo site_url('c_index/import_excel')?>";
-        } else {
-            url = "<?php //echo site_url('dosen/update')?>";
-        }
-
-        if (FILE.trim() == '') {
-            // alert('Field Kode Praktikum Kosong!.');
-            $("#file").attr('class', 'form-control form-control-sm form-control-danger');
-            $("#file").attr("placeholder", "File belum terpilih !");
-            setTimeout(function () {
-                $('#file').removeClass('form-control-danger');
-                $('#file').attr('placeholder','');
-            }, 4000);
-            $('#file').focus();
-            return false;
-        } else {
-            // ajax adding data to database
-            $.ajax({
-                url: url,
-                type: "POST",
-                // data: $('#form-input').serialize(),
-                // dataType: "JSON",
-                // data: formData,
-                contentType: false,
-                cache: false,
-                processData: false,
-                success: function(data) {
-                    // alert(data);
-                    //if success close modal and reload ajax table
-                    $('#large-Modal-input').modal('hide');
-                    reload_table();
-                    swal(
-                        'Berhasil!',
-                        'Data Mahasiswa telah diimport !',
-                        'success'
-                    );
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    // alert('Error adding / update data');
-                     alert(jqXHR.status);
-                }
-            });
-        }
-    }
-
-
 
 </script>

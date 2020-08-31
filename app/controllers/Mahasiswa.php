@@ -3,12 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Mahasiswa extends CI_Controller {
 
-	
+
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->library('template');
-		
+		$this->load->library('Excel');
+
 		//check authentication
 		$this->auth();
 	}
@@ -41,14 +42,14 @@ class Mahasiswa extends CI_Controller {
 	 * @return [type] [description]
 	 */
 	public function index()
-	{	
+	{
 		$control = $this->router->fetch_class();
 		$method = $this->router->fetch_method();
 		helper_log("/".$control."/".$method);
-		
+
 		$id = $this->session->userdata('nim');
 		if($this->session->userdata('level') == "admin")
-		{	
+		{
 			$condition = array('NIM_TBUSER'=> $id);
 			$data['users'] = $this->info_model->get_user($id);
 
@@ -115,7 +116,7 @@ class Mahasiswa extends CI_Controller {
 	}
 
 	public function update()
-	{	
+	{
 		// $input = "picture";
 		// $result = $this->upload_image($input);
 		$data = $this->_get_doc();
@@ -124,11 +125,11 @@ class Mahasiswa extends CI_Controller {
 		$this->master_model->update(array('ID_TBUSER' => $this->input->post('ID_TBUSER')), $data);
 
 		echo json_encode(array("status" => TRUE));
-		
+
 	}
 
 	public function delete($id)
-	{		
+	{
 		$this->master_model->delete($id);
 		echo json_encode(array("status" => TRUE));
 	}
@@ -159,8 +160,8 @@ class Mahasiswa extends CI_Controller {
 			$data = array(
 				'status' => TRUE,
 				'message' => "Successfully upload Image",
-				'data' => $data 
-			);	
+				'data' => $data
+			);
 
 			return $data;
 		}
@@ -176,4 +177,25 @@ class Mahasiswa extends CI_Controller {
 			redirect('user');
 		}
 	}
+
+	public function import_excel() {
+    if (isset($_FILES['file']['name'])) {
+      $path = $_FILES['file']['tmp_name'];
+      $object = PHPExcel_IOFactory::load($path);
+      foreach ($object->getWorksheetIterator() as $worksheet) {
+        $highestRow = $worksheet->getHighestRow();
+        $highestColumn = $worksheet->getHighestColumn();
+        for ($row = 2; $row <= $highestRow; $row++) {
+          $data[] = array(
+            'NIM_TBUSER'        => $worksheet->getCellByColumnAndRow(0, $row)->getValue(),
+            'NAMA_TBUSER'       => $worksheet->getCellByColumnAndRow(1, $row)->getValue(),
+            'LEVEL_TBUSER'      => 'mahasiswa',
+            'KETERANGAN_TBUSER' => 'mahasiswa',
+						'PASSWORD_TBUSER'   => md5($worksheet->getCellByColumnAndRow(0, $row)->getValue()),
+          );
+        }
+        $this->master_model->save_import($data);
+      }
+    }
+  }
 }

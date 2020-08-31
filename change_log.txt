@@ -24,7 +24,7 @@ request update:
 	  format: excel
 	  location: button diletakkan di sebelah kanan button Tambah Master
 	  field: nim, nama_mahasiswa
-	  [ ] -
+	  [x] - 10:43 AM 8/31/2020
 
 	- 6. history praktikum
 	  [ ] -
@@ -166,6 +166,54 @@ C:\xampp\htdocs\labti\app\views\templates\navbar-main.php
 	hilangkan remark -->
 
 
+
+-------------------------------------------------------
+5. menu: Master - Mahasiswa, import data mahasiswa baru
+-------------------------------------------------------
+	referensi:
+	https://www.funtechsy.com/2020/07/import-excel-.html
+	https://www.webslesson.info/2016/12/phpexcel-export-excel-file-into-mysql-database-using-ajax.html
+	https://www.dumetschool.com/blog/membuat-import-excel-menggunakan-codeigniter-ajax
+
+	library:
+	https://github.com/PHPOffice/PHPExcel
+
+	copy content (folders & file)
+	dari C:\PHPExcel-1.8\Classes
+	ke C:\xampp\htdocs\labti\app\third_party
+
+	tabel:
+	ALTER TABLE `labti`.`tbuser` ADD UNIQUE `NIM_TBUSER2` (`NIM_TBUSER`);
+	mencegah duplikasi NIM
+
+	create file:
+	C:\xampp\htdocs\labti\app\libraries\Excel.php
+
+C:\xampp\htdocs\labti\app\controllers\Mahasiswa.php
+	line: 181 - 200
+	public function import_excel() {
+
+C:\xampp\htdocs\labti\app\views\mahasiswa\index.php
+	line: 41 - 71
+	show modal input file
+
+	line: 140
+	tampilkan button IMPORT di menu - master - mahasiswa
+
+	line: 230
+	function show_input_file()
+	tampilkan window modal untuk pilih file
+
+	line: 189 - 212
+	script handling import file
+
+C:\xampp\htdocs\labti\app\config\autoload.php
+	line: 92
+	tambah helper: common
+	untuk show pre print_r
+
+
+
 ----------------------------------------------------------------
 98. ubah index.php, untuk keperluan test di labti.aimpglobal.com
 ----------------------------------------------------------------
@@ -259,45 +307,5 @@ C:\xampp\htdocs\labti\app\views\pengumuman\index.php
 
 
 
--------------------------------------------------------
-5. menu: Master - Mahasiswa, import data mahasiswa baru
--------------------------------------------------------
-	referensi:
-	https://www.funtechsy.com/2020/07/import-excel-.html
 
-	library:
-	https://github.com/PHPOffice/PHPExcel
 
-	copy content (folders & file)
-	dari C:\PHPExcel-1.8\Classes
-	ke C:\xampp\htdocs\labti\app\third_party
-
-	create:
-	controller C_index.php
-	models M_index.php
-	views V_index.php
-
-	tabel:
-	ALTER TABLE `labti`.`tbuser` ADD UNIQUE `NIM_TBUSER2` (`NIM_TBUSER`);
-	mencegah duplikasi NIM
-
-C:\xampp\htdocs\labti\app\views\mahasiswa\index.php
-	line: 41 - 72
-	show modal input file
-
-	line: 141
-	button import excel
-
-	line: 204
-	function show_input_file()
-
-	line: 410
-	function proses_import()
-
-C:\xampp\htdocs\labti\app\controllers\C_index.php
-	line: 17 - 
-
-C:\xampp\htdocs\labti\app\config\autoload.php
-	line: 92
-	tambah helper: common
-	untuk show pre print_r
