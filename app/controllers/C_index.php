@@ -15,45 +15,25 @@ class C_index extends CI_Controller {
   }
 
   public function import_excel() {
-    $file_name = $_FILES['file']['name'];
-
-    $config['upload_path']   = './assets';
-    $config['file_name']     = $file_name;
-    $config['allowed_types'] = 'xls|xlsx|csv';
-    $config['max_size']      = 10000;
-
-    $this->load->library('upload');
-    $this->upload->initialize($config);
-
-    if (!$this->upload->do_upload('file')) {
-      echo $this->upload->display_errors();
-      exit;
+    if (isset($_FILES['file']['name'])) {
+      $path = $_FILES['file']['tmp_name'];
+      $object = PHPExcel_IOFactory::load($path);
+      foreach ($object->getWorksheetIterator() as $worksheet) {
+        // code...
+        $highestRow = $worksheet->getHighestRow();
+        $highestColumn = $worksheet->getHighestColumn();
+        for ($row = 2; $row <= $highestRow; $row++) {
+          // $row_data = $sheet->rangeToArray('A' . $row . ':' . $highest_column . $row, null, true, false);
+          $data[] = array(
+            'NIM_TBUSER'        => $worksheet->getCellByColumnAndRow(0, $row)->getValue(),
+            'NAMA_TBUSER'       => $worksheet->getCellByColumnAndRow(1, $row)->getValue(),
+            'LEVEL_TBUSER'      => 'mahasiswa',
+            'KETERANGAN_TBUSER' => 'mahasiswa',
+          );
+        }
+        $this->master_model->save_import($data);
+      }
     }
-
-    $input_file_name = './assets/' . $file_name;
-
-    try {
-      $input_file_type = PHPExcel_IOFactory::identify($input_file_name);
-      $obj_reader = PHPExcel_IOFactory::createReader($input_file_type);
-      $obj_php_excel = $obj_reader->load($input_file_name);
-    } catch (Exception $e) {
-      die('Error loading file ' . pathinfo($input_file_name, PATHINFO_BASENAME) . ': ' . $e->getMessage());
-    }
-
-    $sheet = $obj_php_excel->getSheet(0);
-    $highest_row = $sheet->getHighestRow();
-    $highest_column = $sheet->getHighestColumn();
-
-    for ($row = 2; $row <= $highest_row; $row++) {
-      $row_data = $sheet->rangeToArray('A' . $row . ':' . $highest_column . $row, null, true, false);
-      $data = array(
-        'noinduk' => $row_data[0][0],
-        'nama'    => $row_data[0][1],
-      );
-
-      $insert = $this->db->insert('tb_siswa', $data);
-    }
-
-    redirect('c_index');
   }
+
 }

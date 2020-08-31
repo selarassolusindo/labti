@@ -38,7 +38,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="large-Modal-2" tabindex="-1" role="dialog">
+<div class="modal fade" id="large-Modal-input" tabindex="-1" role="dialog">
    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
          <div class="modal-header">
@@ -47,7 +47,7 @@
             <span aria-hidden="true">&times;</span>
             </button>
          </div>
-         <form class="form-horizontal" id="form" action="#" method="post" enctype="multipart/form-data" role="form">
+         <form class="form-horizontal" id="form_input" method="post" enctype="multipart/form-data" role="form">
          <div class="modal-body">
             <div class="p-20 z-depth-bottom-0 waves-effect" data-toggle="tooltip" data-placement="top" title=".z-depth-0">
               <div class="row">
@@ -55,7 +55,7 @@
                       <div class="form-group row">
                           <label class="col-sm-3 col-form-label">FILE<span class="text-danger">*</span></label>
                           <div class="col-sm-9">
-                              <input type="file" name="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                              <input type="file" name="file" id="file" required accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
                           </div>
                       </div>
                   </div>
@@ -63,7 +63,7 @@
           </div>
          </div>
          <div class="modal-footer">
-            <button class="btn btn-primary waves-effect waves-light" onclick="save(); return false;" type="submit"> Proses</button>
+            <button class="btn btn-primary waves-effect waves-light" type="submit">Import</button>
             <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Close</button>
          </div>
          </form>
@@ -186,6 +186,33 @@
            ],
            responsive: true
        });
+
+       $('#file').change(function(){
+           $('#form_input').submit();
+         });
+
+       $('#form_input').on('submit', function(event){
+                  event.preventDefault();
+                  $.ajax({
+                       url:"<?php echo site_url('c_index/import_excel') ?>",
+                       method:"POST",
+                       data:new FormData(this),
+                       contentType:false,
+                       processData:false,
+                       success:function(data){
+                         $('#large-Modal-input').modal('hide');
+                         reload_table();
+                         swal(
+                             'Berhasil!',
+                             'Data Mahasiswa telah diimport !',
+                             'success'
+                         );
+                            $('#file').val('');
+                       }
+                  });
+             });
+
+
    });
 
    function reload_table()
@@ -203,10 +230,10 @@
 
     function show_input_file(){
       save_method = 'add';
-      $('#form')[0].reset(); // reset form on modals
-      $('#large-Modal-2').modal('show'); // show bootstrap modal
+      $('#form_input')[0].reset(); // reset form on modals
+      $('#large-Modal-input').modal('show'); // show bootstrap modal
       $('.modal-title').text('Import Data Mahasiswa'); // Set Title to Bootstrap modal title
-      $('.subm').text('Proses'); // Set Title to Button modal title
+      $('.subm').text('Import'); // Set Title to Button modal title
     }
 
     // function edit_person(id) {
@@ -406,4 +433,58 @@
             }
         })
     }
+
+    function proses_import() {
+        var url;
+
+        var FILE = $('#file').val();
+
+        if (save_method == 'add') {
+            url = "<?php echo site_url('c_index/import_excel')?>";
+        } else {
+            url = "<?php //echo site_url('dosen/update')?>";
+        }
+
+        if (FILE.trim() == '') {
+            // alert('Field Kode Praktikum Kosong!.');
+            $("#file").attr('class', 'form-control form-control-sm form-control-danger');
+            $("#file").attr("placeholder", "File belum terpilih !");
+            setTimeout(function () {
+                $('#file').removeClass('form-control-danger');
+                $('#file').attr('placeholder','');
+            }, 4000);
+            $('#file').focus();
+            return false;
+        } else {
+            // ajax adding data to database
+            $.ajax({
+                url: url,
+                type: "POST",
+                // data: $('#form-input').serialize(),
+                // dataType: "JSON",
+                // data: formData,
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function(data) {
+                    // alert(data);
+                    //if success close modal and reload ajax table
+                    $('#large-Modal-input').modal('hide');
+                    reload_table();
+                    swal(
+                        'Berhasil!',
+                        'Data Mahasiswa telah diimport !',
+                        'success'
+                    );
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    // alert('Error adding / update data');
+                     alert(jqXHR.status);
+                }
+            });
+        }
+    }
+
+
+
 </script>

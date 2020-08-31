@@ -4,11 +4,11 @@ class Master_model extends CI_Model {
 	var $table = "tbuser";
 	var $primary_key = "ID_TBUSER";
 	var $column_order = array(null, 'NIM_TBUSER','NAMA_TBUSER'); //field yang ada di table user
-	var $column_search = array('NIM_TBUSER','NAMA_TBUSER'); //field yang diizin untuk pencarian 
-	var $order = array('NIM_TBUSER' => 'asc'); // default order 
+	var $column_search = array('NIM_TBUSER','NAMA_TBUSER'); //field yang diizin untuk pencarian
+	var $order = array('NIM_TBUSER' => 'asc'); // default order
 
 	public function __construct()
-	{	
+	{
 		parent::__construct();
 		$this->load->database();
 	}
@@ -25,12 +25,12 @@ class Master_model extends CI_Model {
       	// $this->db->group_by("NIM_TBUSER");
 
 		$i = 0;
-	
-		foreach ($this->column_search as $item) // loop column 
+
+		foreach ($this->column_search as $item) // loop column
 		{
 			if($_POST['search']['value']) // if datatable send POST for search
 			{
-				
+
 				if($i===0) // first loop
 				{
 					$this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
@@ -46,11 +46,11 @@ class Master_model extends CI_Model {
 			}
 			$i++;
 		}
-		
+
 		if(isset($_POST['order'])) // here order processing
 		{
 			$this->db->order_by($this->column_order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
-		} 
+		}
 		else if(isset($this->order))
 		{
 			$order = $this->order;
@@ -157,16 +157,16 @@ class Master_model extends CI_Model {
 		// $this->db->select('ID_TBUSER, NIM_TBUSER, NAMA_TBUSER, GELAR_TBUSER, GELAR_DEPAN_TBUSER');
       	$this->db->from($this->table);
       	$array = array('KETERANGAN_TBUSER' => 'asisten');
-		$this->db->where($array);  
+		$this->db->where($array);
 		$this->db->order_by("KELAS_TBUSER", "ASC");
 
 		$i = 0;
-	
-		foreach ($this->column_search as $item) // loop column 
+
+		foreach ($this->column_search as $item) // loop column
 		{
 			if($_POST['search']['value']) // if datatable send POST for search
 			{
-				
+
 				if($i===0) // first loop
 				{
 					$this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
@@ -182,11 +182,11 @@ class Master_model extends CI_Model {
 			}
 			$i++;
 		}
-		
+
 		if(isset($_POST['order'])) // here order processing
 		{
 			$this->db->order_by($this->column_order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
-		} 
+		}
 		else if(isset($this->order))
 		{
 			$order = $this->order;
@@ -241,16 +241,16 @@ class Master_model extends CI_Model {
 		// $this->db->select('ID_TBUSER, NIM_TBUSER, NAMA_TBUSER, GELAR_TBUSER, GELAR_DEPAN_TBUSER');
       	$this->db->from($this->table);
       	$array = array('LEVEL_TBUSER' => 'mahasiswa', 'KETERANGAN_TBUSER' => 'mahasiswa');
-		$this->db->where($array);  
+		$this->db->where($array);
 		$this->db->order_by("NIM_TBUSER", "ASC");
 
 		$i = 0;
-	
-		foreach ($this->column_search as $item) // loop column 
+
+		foreach ($this->column_search as $item) // loop column
 		{
 			if($_POST['search']['value']) // if datatable send POST for search
 			{
-				
+
 				if($i===0) // first loop
 				{
 					$this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
@@ -266,11 +266,11 @@ class Master_model extends CI_Model {
 			}
 			$i++;
 		}
-		
+
 		if(isset($_POST['order'])) // here order processing
 		{
 			$this->db->order_by($this->column_order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
-		} 
+		}
 		else if(isset($this->order))
 		{
 			$order = $this->order;
@@ -312,6 +312,10 @@ class Master_model extends CI_Model {
 		$query = $this->db->get();
 
 		return $query->row();
+	}
+
+	public function save_import($data) {
+		$this->db->insert_batch($this->table, $data);
 	}
 
 }

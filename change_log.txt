@@ -282,14 +282,22 @@ C:\xampp\htdocs\labti\app\views\pengumuman\index.php
 	mencegah duplikasi NIM
 
 C:\xampp\htdocs\labti\app\views\mahasiswa\index.php
-	line: 41
-	modal input file excel
+	line: 41 - 72
+	show modal input file
 
-	line: 108
+	line: 141
 	button import excel
 
-	line: 171
-	function proses_import(){
+	line: 204
+	function show_input_file()
 
+	line: 410
+	function proses_import()
 
+C:\xampp\htdocs\labti\app\controllers\C_index.php
+	line: 17 - 
 
+C:\xampp\htdocs\labti\app\config\autoload.php
+	line: 92
+	tambah helper: common
+	untuk show pre print_r
