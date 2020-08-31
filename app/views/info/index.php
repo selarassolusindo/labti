@@ -1,8 +1,8 @@
-<?php 
-   defined('BASEPATH') OR exit('No direct script access allowed'); 
+<?php
+   defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<?php 
-   defined('BASEPATH') OR exit('No direct script access allowed'); 
+<?php
+   defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
 <div class="page-header card">
@@ -56,7 +56,7 @@
     </div>
 </div>
 
-<script type="text/javascript" language="javascript"> 
+<script type="text/javascript" language="javascript">
   $(function() {
       $(this).bind("contextmenu", function(e) {
           e.preventDefault();
@@ -81,7 +81,7 @@
            dom: 'Bfrtip',
            buttons: [
               {
-                text: '<i class="ti-zip"> Cetak Transkrip</i>',
+                text: '<i class="ti-zip"></i>Cetak Transkrip', // text: '<i class="ti-zip"> Cetak Transkrip</i>',
                 className: "btn hor-grd btn-grd-primary",
                 action: function ( e, dt, node, config ) {
                   <?php //foreach($users as $row): ?>
@@ -91,7 +91,7 @@
                       // window.location = "http://www.youtube.com";
                       window.location='<?php echo site_url('info/cetak_transkrip');?>';
                       //window.open('<?php //echo site_url('info/cetak_transkrip');?>');
-                  <?php //endif ?>                  
+                  <?php //endif ?>
                   <?php //endforeach; ?>
 
                 }
@@ -101,45 +101,45 @@
                    "targets": [0],
                    "width": 35,
                    "className": "text-center",
-                   // "orderable": false, 
+                   // "orderable": false,
                },
                {
                    "targets": [1],
                    "width": 50,
                    "className": "text-center",
-                   // "orderable": false, 
+                   // "orderable": false,
                },
                {
                    "targets": [2],
                    "width": 250,
-                   // "orderable": false, 
+                   // "orderable": false,
                },
                {
                    "targets": [3],
                    "width": 110,
                    "className": "text-center",
-                   // "orderable": false, 
+                   // "orderable": false,
                },
                {
                    "targets": [4],
                    "width": 100,
                    "className": "text-center",
-                   // "orderable": false, 
+                   // "orderable": false,
                },
                {
                    "targets": [5],
                    "width": 100,
                    "className": "text-center",
-                   // "orderable": false, 
+                   // "orderable": false,
                },
                {
                    "targets": [6],
                    "width": 100,
                    "className": "text-center",
-                   // "orderable": false, 
+                   // "orderable": false,
                },
            ],
            responsive: true
        });
-   });        
+   });
 </script>

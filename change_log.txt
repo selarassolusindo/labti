@@ -240,7 +240,7 @@ ubah masing-masing file database.php,
 
 
 ----------------------------------------------------------------------------------
-99. ubah setting icon class di button "Tambah [function]" pada setiap form tambah,
+99. ubah setting icon class di button "[crud] [function]" pada setiap form tambah,
 ----------------------------------------------------------------------------------
 C:\xampp\htdocs\labti\app\views\praktikum\index-main.php
 	line: 132
@@ -306,6 +306,6 @@ C:\xampp\htdocs\labti\app\views\pengumuman\index.php
 	text: '<i class="ti-plus"></i>Tambah Pengumuman', // text: '<i class="ti-plus"> Tambah Pengumuman</i>',
 
 
-
-
-
+C:\xampp\htdocs\labti\app\views\info\index.php
+	line: 84
+	text: '<i class="ti-zip"> Cetak Transkrip</i>',
