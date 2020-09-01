@@ -143,7 +143,7 @@
                     <button class="btn btn-default dropdown-toggle waves-effect waves-light btn-mini" type="button" id="dropdown-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="ti-view-list-alt"></i></button>
                     <div class="dropdown-menu" aria-labelledby="dropdown-2" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                       <a class="dropdown-item waves-light waves-effect" href="" data-toggle="modal" data-target="#ModaleditD<?php echo $row->ID_JADWAL_PEMBUKAAN_PRAKTIKUM;?>"><i class="ti-pencil-alt"></i> Ubah</a>
-                      <a class="dropdown-item waves-light waves-effect" href="<?php echo site_url('pembukaan_praktikum/hapus/'.$row->ID_JADWAL_PEMBUKAAN_PRAKTIKUM);?>" data-confirm="Yakin untuk menghapus praktikum <?php echo ucwords($row->NAMA_PRAKTIKUM); ?>"><i class="ti-brush-alt"> Hapus</i></a>
+                      <a class="dropdown-item waves-light waves-effect" href="<?php echo site_url('pembukaan_praktikum/hapus/'.$row->ID_JADWAL_PEMBUKAAN_PRAKTIKUM);?>" data-confirm="Yakin untuk menghapus praktikum <?php echo ucwords($row->NAMA_PRAKTIKUM); ?>"><i class="ti-brush-alt"></i>Hapus</a>
                     </div>
                   </div>
                 </td>
@@ -363,7 +363,7 @@
            dom: 'Bfrtip',
             buttons: [
               {
-                text: '<i class="ti-arrow-left"> Kembali</i>',
+                text: '<i class="ti-arrow-left"></i>Kembali', //'<i class="ti-arrow-left"> Kembali</i>',
                 className: "btn hor-grd btn-grd-info md-effect-13",
                 action: function ( e, dt, node, config ) {
                   window.location='<?php echo site_url('pembukaan-praktikum');?>';

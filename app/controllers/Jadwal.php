@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Jadwal extends CI_Controller {
 
-	
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -39,11 +39,11 @@ class Jadwal extends CI_Controller {
 	 * @return [type] [description]
 	 */
 	public function index()
-	{	
+	{
 		$control = $this->router->fetch_class();
 		$method = $this->router->fetch_method();
 		helper_log("/".$control."/".$method);
-		
+
 		$id = $this->session->userdata('nim');
 		if($id) {
 			$condition = array('NIM_TBUSER'=> $id);
@@ -55,7 +55,7 @@ class Jadwal extends CI_Controller {
 		} else {
 			$this->session->set_flashdata('message_danger', "System Error");
 			redirect('depan');
-		}	
+		}
 	}
 
 	/**
@@ -63,15 +63,15 @@ class Jadwal extends CI_Controller {
 	 * @return [type] [description]
 	 */
 	public function index_main()
-	{	
+	{
 		$control = $this->router->fetch_class();
 		$method = $this->router->fetch_method();
 		helper_log("/".$control."/".$method);
-		
-		
+
+
 		$id = $this->session->userdata('nim');
 		if($this->session->userdata('level') == "admin")
-		{	
+		{
 			$condition = array('NIM_TBUSER'=> $id);
 			$data['users'] = $this->info_model->get_user($id);
 			$data['models'] = $this->jadwal_model->get_all_with_relation();
@@ -114,8 +114,8 @@ class Jadwal extends CI_Controller {
 			$row[] = '<div class="dropdown-default dropdown open" >
 					    <button class="btn btn-default dropdown-toggle waves-effect waves-light btn-mini" type="button" id="dropdown-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="ti-view-list-alt" ></i></button>
 					    <div class="dropdown-menu" aria-labelledby="dropdown-2" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-					        <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="edit_person('."'".$field->NO_JADWAL_PRAKTIKUM."'".')"><i class="ti-pencil-alt"> Ubah</i></a>
-					        <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="delete_person('."'".$field->NO_JADWAL_PRAKTIKUM."'".')" ><i class="ti-brush-alt"> Hapus</i></a>
+					        <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="edit_person('."'".$field->NO_JADWAL_PRAKTIKUM."'".')"><i class="ti-pencil-alt"></i>Ubah</a>
+					        <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="delete_person('."'".$field->NO_JADWAL_PRAKTIKUM."'".')" ><i class="ti-brush-alt"></i>Hapus</a>
 					    </div>
 					</div>';
 
@@ -145,9 +145,9 @@ class Jadwal extends CI_Controller {
         $data = $this->jadwal_model->get_by_id($id);
         echo json_encode($data);
     }
-    
+
     public function update()
-	{	
+	{
 		// $input = "picture";
 		// $result = $this->upload_image($input);
 		$data = $this->_get_doc();
@@ -156,15 +156,15 @@ class Jadwal extends CI_Controller {
 		$this->jadwal_model->update(array('NO_JADWAL_PRAKTIKUM' => $this->input->post('NO_JADWAL_PRAKTIKUM')), $data);
 
 		echo json_encode(array("status" => TRUE));
-		
+
 	}
 
 	public function delete($id)
-	{		
+	{
 		$this->jadwal_model->delete($id);
 		echo json_encode(array("status" => TRUE));
 	}
-	
+
 	private function auth()
 	{
 		if($this->session->userdata('is_logged_in'))

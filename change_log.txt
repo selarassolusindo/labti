@@ -239,9 +239,9 @@ ubah masing-masing file database.php,
 	- sesuaikan dengan konfigurasi database masing-masing environment
 
 
-----------------------------------------------------------------------------------
-99. ubah setting icon class di button "[crud] [function]" pada setiap form tambah,
-----------------------------------------------------------------------------------
+--------------------------------------------------------------------------
+99. ubah setting icon class di button "[crud] [function]" pada setiap form 
+--------------------------------------------------------------------------
 C:\xampp\htdocs\labti\app\views\praktikum\index-main.php
 	line: 132
 	text: '<i class="ti-plus"></i>Tambah Baru', // text: '<i class="ti-plus"> Tambah Baru</i>',
@@ -309,3 +309,30 @@ C:\xampp\htdocs\labti\app\views\pengumuman\index.php
 C:\xampp\htdocs\labti\app\views\info\index.php
 	line: 84
 	text: '<i class="ti-zip"> Cetak Transkrip</i>',
+
+C:\xampp\htdocs\labti\app\controllers\Jadwal.php
+	line: 117 - 118
+	<a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="edit_person('."'".$field->NO_JADWAL_PRAKTIKUM."'".')"><i class="ti-pencil-alt"></i>Ubah</a>
+	<a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="delete_person('."'".$field->NO_JADWAL_PRAKTIKUM."'".')" ><i class="ti-brush-alt"></i>Hapus</a>
+
+C:\xampp\htdocs\labti\app\controllers\Pembukaan_praktikum.php
+	line: 71 - 73
+	<a class="dropdown-item waves-light waves-effect" href="'.base_url('pembukaan-praktikum/lihat/'.$field->NO_JADWAL_PEMBUKAAN).'" ><i class="ti-eye"></i>Lihat</a>
+	<a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="edit_person('."'".$field->NO_JADWAL_PEMBUKAAN."'".')"><i class="ti-pencil-alt"></i>Ubah</a>
+	<a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="delete_person('."'".$field->NO_JADWAL_PEMBUKAAN."'".')"><i class="ti-brush-alt"></i>Hapus</a>
+
+C:\xampp\htdocs\labti\app\views\pembukaan-praktikum\tambah-data-praktikum.php
+	line: 366
+	text: '<i class="ti-arrow-left"></i>Kembali', //'<i class="ti-arrow-left"> Kembali</i>',
+
+	line: 146
+	<a class="dropdown-item waves-light waves-effect" href="<?php echo site_url('pembukaan_praktikum/hapus/'.$row->ID_JADWAL_PEMBUKAAN_PRAKTIKUM);?>" data-confirm="Yakin untuk menghapus praktikum <?php echo ucwords($row->NAMA_PRAKTIKUM); ?>"><i class="ti-brush-alt"></i>Hapus</a>
+
+C:\xampp\htdocs\labti\app\views\validasi\index.php
+	line: 86
+	<a class="dropdown-item waves-light waves-effect" data-toggle="modal" data-target="#modal-edit<?=$row->ID_PESERTA;?>"><i class="ti-pencil-alt"></i>Ubah</a>
+
+	line: 220 - 221
+	'<button class="btn btn-grd-info btn-custom subm" type="submit" ><i class="ti-write"></i>Validasi</button>
+	<button type="button" class="btn btn-grd-danger btn-custom" data-dismiss="modal">&nbsp;&nbsp;<i class="ti-na"></i>Batal&nbsp;&nbsp;</button>';
+

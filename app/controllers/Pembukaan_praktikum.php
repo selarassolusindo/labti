@@ -3,12 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pembukaan_praktikum extends CI_Controller {
 
-	
+
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->library('template');
-		
+
 		//check authentication
 		$this->auth();
 	}
@@ -34,14 +34,14 @@ class Pembukaan_praktikum extends CI_Controller {
 	 * @return [type] [description]
 	 */
 	public function index()
-	{	
+	{
 		$control = $this->router->fetch_class();
 		$method = $this->router->fetch_method();
 		helper_log("/".$control."/".$method);
-		
+
 		$id = $this->session->userdata('nim');
 		if($this->session->userdata('level') == "admin")
-		{	
+		{
 			$condition = array('NIM_TBUSER'=> $id);
 			$data['users'] = $this->info_model->get_user($id);
 
@@ -68,9 +68,9 @@ class Pembukaan_praktikum extends CI_Controller {
 			$row[] = '<div class="dropdown-default dropdown open">
 					    <button class="btn btn-default dropdown-toggle waves-effect waves-light btn-mini" type="button" id="dropdown-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="ti-view-list-alt"></i></button>
 					    <div class="dropdown-menu" aria-labelledby="dropdown-2" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-					    	<a class="dropdown-item waves-light waves-effect" href="'.base_url('pembukaan-praktikum/lihat/'.$field->NO_JADWAL_PEMBUKAAN).'" ><i class="ti-eye"> Lihat</i></a>
-					        <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="edit_person('."'".$field->NO_JADWAL_PEMBUKAAN."'".')"><i class="ti-pencil-alt"> Ubah</i></a>
-					        <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="delete_person('."'".$field->NO_JADWAL_PEMBUKAAN."'".')"><i class="ti-brush-alt"> Hapus</i></a>
+					    		<a class="dropdown-item waves-light waves-effect" href="'.base_url('pembukaan-praktikum/lihat/'.$field->NO_JADWAL_PEMBUKAAN).'" ><i class="ti-eye"></i>Lihat</a>
+					        <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="edit_person('."'".$field->NO_JADWAL_PEMBUKAAN."'".')"><i class="ti-pencil-alt"></i>Ubah</a>
+					        <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="delete_person('."'".$field->NO_JADWAL_PEMBUKAAN."'".')"><i class="ti-brush-alt"></i>Hapus</a>
 					    </div>
 					</div>';
 			$data[] = $row;
@@ -112,7 +112,7 @@ class Pembukaan_praktikum extends CI_Controller {
 	 * @return [type] [description]
 	 */
 	public function update()
-	{	
+	{
 		$data = $this->_get_doc();
 		$this->pembukaan_praktikum_model->update(array('NO_JADWAL_PEMBUKAAN' => $this->input->post('NO_JADWAL_PEMBUKAAN')), $data);
 
@@ -124,7 +124,7 @@ class Pembukaan_praktikum extends CI_Controller {
 	 * @return [type] [description]
 	 */
 	public function delete($id)
-	{		
+	{
 		$this->pembukaan_praktikum_model->delete($id);
 		echo json_encode(array("status" => TRUE));
 	}
@@ -146,13 +146,13 @@ class Pembukaan_praktikum extends CI_Controller {
 
 		return $data;
 	}
-	
+
 	/**
 	 * Load Page View
 	 * @return [type] [description]
 	 */
 	public function lihat()
-	{	
+	{
 		$control = $this->router->fetch_class();
 		$method = $this->router->fetch_method();
 		helper_log("/".$control."/".$method);
@@ -167,12 +167,12 @@ class Pembukaan_praktikum extends CI_Controller {
 			$data['praktikum']= $this->pembukaan_praktikum_model->get_praktikum_by($no);
 
 			$this->template->set_navbar('templates/navbar-main');
-			$this->template->load('main', 'pembukaan-praktikum/tambah-data-praktikum', $data);		
+			$this->template->load('main', 'pembukaan-praktikum/tambah-data-praktikum', $data);
 		} else {
 			$this->session->set_flashdata('message_danger', "System Error");
 			redirect('beranda-main');
 		}
-	}	
+	}
 
 	/**
 	 * Load Page Insert
@@ -202,7 +202,7 @@ class Pembukaan_praktikum extends CI_Controller {
 		        );
 		       // echo "<br /><pre>";
 		       // print_r($data);
-		       // echo "<pre>";		    
+		       // echo "<pre>";
 		   }
 
 		    $res = $this->pembukaan_praktikum_model->create($data);
@@ -212,7 +212,7 @@ class Pembukaan_praktikum extends CI_Controller {
 		    } else {
 		        $this->session->set_flashdata('message_danger', "Kriteria gagal ditambahkan");
 		    }
-		    
+
         	redirect('pembukaan_praktikum/lihat/'.$NO_JADWAL_PEMBUKAAN);
 		} else {
 		    echo "<b>Please Select Atleast One Option.</b>";
@@ -241,7 +241,7 @@ class Pembukaan_praktikum extends CI_Controller {
 			if($res) {
 				$this->session->set_flashdata('message_success2', "Berhasil mengedit data");
 			} else {
-				$this->session->set_flashdata('message_danger', "Failed updating data");	
+				$this->session->set_flashdata('message_danger', "Failed updating data");
 			}
 
 			redirect($_SERVER['HTTP_REFERER']);
@@ -256,15 +256,15 @@ class Pembukaan_praktikum extends CI_Controller {
 	 * @return [type] [description]
 	 */
 	public function hapus()
-	{	
+	{
 		$id = $this->uri->segment(3);
 		if($id) {
 			$res = $this->pembukaan_praktikum_model->hapus_detail($id);
-			
+
 			if($res) {
-				$this->session->set_flashdata('message_success1', "Kriteria berhasil dihapus");			
+				$this->session->set_flashdata('message_success1', "Kriteria berhasil dihapus");
 			} else {
-				$this->session->set_flashdata('message_danger', "Kriteria gagal dihapus");			
+				$this->session->set_flashdata('message_danger', "Kriteria gagal dihapus");
 			}
 		} else {
 			$this->session->set_flashdata('message_danger', "System Error");

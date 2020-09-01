@@ -1,5 +1,5 @@
-<?php 
-   defined('BASEPATH') OR exit('No direct script access allowed'); 
+<?php
+   defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
 <div class="page-header card">
@@ -60,9 +60,9 @@
                         </thead>
                         <tbody>
                             <?php $no=1; if($peserta): ?>
-                            <?php 
+                            <?php
                               if(is_array($peserta)):
-                                foreach($peserta as $row): 
+                                foreach($peserta as $row):
                             ?>
                             <tr>
                               <td align="center"><?php echo $no++; ?></td>
@@ -70,26 +70,26 @@
                               <td ><?= strtoupper($row->NAMA_TBUSER); ?></td>
                               <td style="text-align: center;"><?php echo "Rp. ".number_format($row->BIAYA_PRAKTIKUM,0,',','.'); ?></td>
                               <td style="text-align: center;">
-                                <?php 
+                                <?php
                                 if ($row->KETERANGAN_PESERTA === 'mendaftar') {
                                   echo '<p class="text-danger">Belum</p>';
                                 }else{
                                   echo '<p class="text-success">Sudah</p>';
                                 }
                                 ?>
-                                  
+
                                 </td>
                               <td style="text-align: center;">
                                 <div class="dropdown-default dropdown open">
                                   <button class="btn btn-default dropdown-toggle waves-effect waves-light btn-mini" type="button" id="dropdown-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="ti-view-list-alt"></i></button>
                                   <div class="dropdown-menu" aria-labelledby="dropdown-2" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                                    <a class="dropdown-item waves-light waves-effect" data-toggle="modal" data-target="#modal-edit<?=$row->ID_PESERTA;?>"><i class="ti-pencil-alt"> Ubah</i></a>
+                                    <a class="dropdown-item waves-light waves-effect" data-toggle="modal" data-target="#modal-edit<?=$row->ID_PESERTA;?>"><i class="ti-pencil-alt"></i>Ubah</a>
                                     <!-- <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="delete_person('."'".$row->ID_PESERTA."'".')"><i class="ti-brush-alt"> Hapus</i></a> -->
                                   </div>
                                 </div>
                               </td>
                             </tr>
-                            <?php 
+                            <?php
                                 endforeach;
                               endif; ?>
                             <?php else: ?>
@@ -162,7 +162,7 @@
                             <th style="text-align: center;">Validasi</th>
                         </tr>
                     </thead>
-                    <tbody>                        
+                    <tbody>
                         <?php
                         $getpriode = $this->validasi_model->getJadwalPembukaan();
                         foreach ($getpriode as $row){
@@ -172,7 +172,7 @@
                           }
 
                           $no=1; $i = 0;if($query):
-                          foreach ($query->result() as $qer): 
+                          foreach ($query->result() as $qer):
                         ?>
                         <tr >
                             <td style="text-align: center;"><?php echo $no++; ?></td>
@@ -181,14 +181,14 @@
                             <td style="text-align: center;"><?php echo $qer->SMS; ?></td>
                             <td style="text-align: center;"><?php echo "Rp. ".number_format($qer->BIAYA,0,',','.'); ?></td>
                             <td style="text-align: center;">
-                              <?php 
+                              <?php
                               if ($qer->KETERANGAN === 'mendaftar') {
                                 echo '<p class="text-danger">Belum</p>';
                               }else{
                                 echo '<p class="text-success">Sudah</p>';
                               }
                               ?>
-                                
+
                             </td>
                             <!-- <td> -->
                               <?php //if ($qer->KETERANGAN == 'mendaftar'): ?>
@@ -213,18 +213,18 @@
                 </table>
             </div>
           </div>
-         <div class="modal-footer">      
-            <?php 
+         <div class="modal-footer">
+            <?php
             if ($qer->KETERANGAN === 'mendaftar') {
-              echo 
-              '<button class="btn btn-grd-info btn-custom subm" type="submit" ><i class="ti-write"> Validasi</i></button> 
-               <button type="button" class="btn btn-grd-danger btn-custom" data-dismiss="modal">&nbsp;&nbsp;<i class="ti-na"> Batal</i>&nbsp;&nbsp;</button>';
+              echo
+              '<button class="btn btn-grd-info btn-custom subm" type="submit" ><i class="ti-write"></i>Validasi</button>
+               <button type="button" class="btn btn-grd-danger btn-custom" data-dismiss="modal">&nbsp;&nbsp;<i class="ti-na"></i>Batal&nbsp;&nbsp;</button>';
             }else{
               echo '';
             }
-            ?>      
-            
-         </div>        
+            ?>
+
+         </div>
          </form>
       </div>
    </div>
@@ -234,43 +234,43 @@
 <script type="text/javascript">
   var table;
    $(document).ready(function() {
-       table = $('#simpletable').DataTable({ 
-           "order": [], 
+       table = $('#simpletable').DataTable({
+           "order": [],
            language: {
                search: "_INPUT_",
                searchPlaceholder: "Cari : NIM / NAMA...",
                infoFiltered: ""
            },
            "columnDefs": [
-           { 
-               "targets": [ 0 ], 
-               "width": 25, 
+           {
+               "targets": [ 0 ],
+               "width": 25,
                "className": "text-center",
-               // "orderable": false, 
+               // "orderable": false,
            },
-           { 
-               "targets": [ 1 ], 
-               "width": 40, 
+           {
+               "targets": [ 1 ],
+               "width": 40,
                "className": "text-center",
-               // "orderable": false, 
+               // "orderable": false,
            },
-           { 
-               "targets": [ 3 ], 
-                "width": 70, 
+           {
+               "targets": [ 3 ],
+                "width": 70,
                "className": "text-center",
-               // "orderable": false, 
+               // "orderable": false,
            },
-           { 
-               "targets": [ 4 ], 
-                "width": 50, 
+           {
+               "targets": [ 4 ],
+                "width": 50,
                "className": "text-center",
-               // "orderable": false, 
+               // "orderable": false,
            },
-           { 
-               "targets": [ 5 ], 
-                "width": 40, 
+           {
+               "targets": [ 5 ],
+                "width": 40,
                "className": "text-center",
-               // "orderable": false, 
+               // "orderable": false,
            },
            ],
            responsive: true
