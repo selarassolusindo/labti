@@ -344,6 +344,9 @@ C:\xampp\htdocs\labti\app\views\pembukaan-praktikum\tambah-data-praktikum.php
 	line: 314
 	<button type="button" class="btn btn-grd-danger btn-custom" data-dismiss="modal">&nbsp;&nbsp;<i class="ti-na"></i>Batal&nbsp;&nbsp;</button>
 
+	line: 201
+	<button type="button" class="btn btn-grd-danger btn-custom" data-dismiss="modal">&nbsp;&nbsp;<i class="ti-na"></i>Batal&nbsp;&nbsp;</button>
+
 
 C:\xampp\htdocs\labti\app\views\validasi\index.php
 	line: 86

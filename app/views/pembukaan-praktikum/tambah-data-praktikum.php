@@ -191,14 +191,14 @@
               </div>
               <div class="col-sm-2">
                 <div class="form-group row">
-                  <div class="col-sm-12">
+                  <div class="col">
                     <!-- <button class="btn btn-grd-info btn-custom" type="submit"><i class="ti-plus"> Tambah</i></button>  -->
                     <button class="btn btn-grd-info btn-custom" type="submit"><i class="ti-plus"></i>Tambah</button>
                   </div>
                 </div>
                 <div class="form-group row">
-                  <div class="col-sm-12">
-                    <button type="button" class="btn btn-grd-danger btn-custom" data-dismiss="modal">&nbsp;&nbsp;<i class="ti-na"> Batal</i>&nbsp;&nbsp;</button>
+                  <div class="col">
+                    <button type="button" class="btn btn-grd-danger btn-custom" data-dismiss="modal"><i class="ti-na"></i>Batal</button>
                   </div>
                 </div>
               </div>
