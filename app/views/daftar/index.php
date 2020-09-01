@@ -1,5 +1,5 @@
-<?php 
-   defined('BASEPATH') OR exit('No direct script access allowed'); 
+<?php
+   defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
 <div class="page-header card">
@@ -87,7 +87,7 @@
                                 <?php echo ucwords($row->STATUS_PESERTA); ?>
                             </td>
                             <td style="text-align: center;">
-                                <?php 
+                                <?php
                                     if ($row->KETERANGAN_PESERTA == "mendaftar") {
                                        echo "<p class='text-danger'>Belum</p>";
                                     } else {
@@ -125,7 +125,7 @@
          </div>
          <form class="form-horizontal" action="<?php echo site_url('daftar/insert/')?>" method="post" enctype="multipart/form-data" role="form">
          <div class="modal-body">
-                <?php foreach($users as $row): 
+                <?php foreach($users as $row):
                   $nim = ucwords($row->NIM_TBUSER);
                   $kelas = ucwords($row->KELAS_TBUSER);
                 ?>
@@ -149,9 +149,9 @@
                             <div class="col-form-label">Catatan : Pilihan kelas otomatis sama dengan profil yang anda simpan. <a href="<?php echo site_url('profil/')?>"> (ubah?)</a></div>
                         </div>
                     </div>
-                    <?php                       
-                      foreach($jadprak as $row1): 
-                      $periode = $row1->PERIODE_JADWAL_PEMBUKAAN;                      
+                    <?php
+                      foreach($jadprak as $row1):
+                      $periode = $row1->PERIODE_JADWAL_PEMBUKAAN;
                       $tahun = $row1->TAHUN_JADWAL_PEMBUKAAN;
                     ?>
                     <?php endforeach; ?>
@@ -177,25 +177,25 @@
                                 <?php foreach($openprak as $row): ?>
                                 <?php if ($row->AKHIR_PENDAFTARAN_JADWAL_PEMBUKAAN_PRAKTIKUM < date('Y-m-d') ): ?>
 
-                                <?php 
-                                  else: 
+                                <?php
+                                  else:
                                   $kode =$row->KODE_PRAKTIKUM;
                                 ?>
                                       <tr>
-                                          <?php                                            
+                                          <?php
                                             $query = $this->db->query("SELECT DISTINCT NIM_PESERTA, PRAK_PESERTA, PERIODE_PESERTA, THNPELAKSANAAN_PESERTA, NILAI_PESERTA FROM peserta WHERE NIM_PESERTA = '$nim' AND PRAK_PESERTA = '$kode'");
                                           ?>
-                                          <?php 
-                                              if ($query->num_rows() == 0): 
+                                          <?php
+                                              if ($query->num_rows() == 0):
                                           ?>
                                             <td style="text-align: center;">
                                               <input  type = "checkbox" name = "kode[<?php echo $i;?>]" value = "<?php echo $row->KODE_PRAKTIKUM;?>" />
                                             </td>
                                           <?php else: ?>
-                                          <?php                                            
+                                          <?php
                                             $i = 0;
-                                            foreach ($query->result() as $qer): 
-                                            if ($qer->NILAI_PESERTA == 'F'): 
+                                            foreach ($query->result() as $qer):
+                                            if ($qer->NILAI_PESERTA == 'F'):
                                           ?>
                                             <td style="text-align: center;">
                                               <input  type = "checkbox" name = "kode" value = "<?php echo $row->KODE_PRAKTIKUM;?>" disabled/>
@@ -214,12 +214,12 @@
                                               <input type="hidden" name="KELAS_PESERTA[<?php echo $i;?>]" class="form-control" value="<?php echo $kelas; ?>" readonly>
                                               <input type="hidden" name="TGLDAFTAR_PESERTA[<?php echo $i;?>]" class="form-control" value="<?php echo date('Y-m-d'); ?>" readonly>
                                               <input type="hidden" name="PERIODE_PESERTA[<?php echo $i;?>]" class="form-control" value="<?php echo $periode; ?>" readonly>
-                                              <input type="hidden" name="TAHUN_PELAKSANAN_PESERTA[<?php echo $i;?>]" class="form-control" value="<?php echo $tahun; ?>" readonly> 
+                                              <input type="hidden" name="TAHUN_PELAKSANAN_PESERTA[<?php echo $i;?>]" class="form-control" value="<?php echo $tahun; ?>" readonly>
                                               <input type="hidden" name="STATUS_PESERTA[<?php echo $i;?>]" class="form-control" value="<?php if ($query->num_rows() == 0){
                                                 echo "baru";
                                               }elseif($query->num_rows() >=1){
-                                                echo "ulang";                                                    
-                                              } 
+                                                echo "ulang";
+                                              }
                                               ?>">
 
                                           </td>
@@ -227,16 +227,16 @@
                                           <td style="text-align: center;"><?php echo "Rp. ".$row->BIAYA_PRAKTIKUM; ?></td>
                                           <!-- <td style="text-align: center;"><?php echo date("d-m-Y", strtotime($row->AKHIR_PENDAFTARAN_JADWAL_PEMBUKAAN_PRAKTIKUM));
                                           ; ?></td> -->
-                                            <?php 
-                                              if ($query->num_rows() == 0): 
+                                            <?php
+                                              if ($query->num_rows() == 0):
                                             ?>
                                               <td style="text-align: center;" >
                                                 Baru
                                               </td>
                                             <?php else: ?>
                                               <?php
-                                                foreach ($query->result() as $qer): 
-                                                if ($qer->NILAI_PESERTA == 'F'): 
+                                                foreach ($query->result() as $qer):
+                                                if ($qer->NILAI_PESERTA == 'F'):
                                               ?>
                                                 <td style="text-align: center;">Didaftar</td>
                                               <?php else: ?>
@@ -246,7 +246,7 @@
                                               <?php endif; ?>
                                               <?php endforeach; ?>
                                             <?php endif; ?>
-                                      </tr> 
+                                      </tr>
                                 <?php endif; ?>
                                 <?php ++$i;  endforeach; ?>
                                 <?php endif; ?>
@@ -254,16 +254,16 @@
                         </table>
                     </div>
          </div>
-         <div class="modal-footer">            
+         <div class="modal-footer">
             <button class="btn btn-primary waves-effect waves-light" type="submit"> Daftar</button>
             <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Close</button>
-         </div>        
+         </div>
          </form>
       </div>
    </div>
 </div>
 
-<script type="text/javascript" language="javascript"> 
+<script type="text/javascript" language="javascript">
   // $(function() {
   //     $(this).bind("contextmenu", function(e) {
   //         e.preventDefault();
@@ -284,13 +284,13 @@
           var href = $(this).attr('href');
           if (!$('#dataConfirmModal').length) {
             $('body').append('<div class="modal inmodal" id="dataConfirmModal" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog"> <div class="modal-content animated flipInY"> <div class="modal-header"><h4 class="modal-title">Hapus Data Praktikum</h4><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button></div> <div class="modal-body" style="text-align: center"> </div> <div class="modal-footer"> <button class="btn" data-dismiss="modal" aria-hidden="true"><i class="ti-close"></i> Batal</button> <a class="btn btn-danger" id="dataConfirmOK"><i class="ti-brush-alt"></i> Hapus</a> </div> </div> </div> </div>');
-          } 
+          }
           $('#dataConfirmModal').find('.modal-body').text($(this).attr('data-confirm'));
           $('#dataConfirmOK').attr('href', href);
           $('#dataConfirmModal').modal({show:true});
           return false;
         });
-        
+
        $('#tbprak').dataTable({
             language: {
               search: "_INPUT_",
@@ -299,14 +299,14 @@
             dom: 'Bfrtip',
             buttons: [
               {
-                text: '<i class="ti-files"> Formulir Pendaftaran</i>',
+                text: '<i class="ti-files"></i>Formulir Pendaftaran',// text: '<i class="ti-files"> Formulir Pendaftaran</i>',
                 className: "btn hor-grd btn-grd-success md-effect-13",
                 action: function ( e, dt, node, config ) {
                       $('#large-Modal').modal('show');
                 }
               },
               {
-                text: '<i class="ti-zip"> Cetak Formulir Pendaftaran</i>',
+                text: '<i class="ti-zip"></i>Cetak Formulir Pendaftaran',// text: '<i class="ti-zip"> Cetak Formulir Pendaftaran</i>',
                 className: "btn hor-grd btn-grd-info",
                 action: function ( e, dt, node, config ) {
                       window.location='<?php echo site_url('daftar/cetak_formulir');?>';
@@ -317,78 +317,78 @@
                    "targets": [0],
                    "width": 10,
                    "className": "text-center",
-                   // "orderable": false, 
+                   // "orderable": false,
                },
                {
                    "targets": [1],
                    "width": 40,
                    "className": "text-center",
-                   // "orderable": false, 
+                   // "orderable": false,
                },
                {
                    "targets": [2],
                    "width": 170,
-                   // "orderable": false, 
+                   // "orderable": false,
                },
                {
                    "targets": [3],
                    "width": 60,
                    "className": "text-center",
-                   // "orderable": false, 
+                   // "orderable": false,
                },
                {
                    "targets": [4],
                    "width": 40,
                    "className": "text-center",
-                   // "orderable": false, 
+                   // "orderable": false,
                },
                {
                    "targets": [5],
                    "width": 40,
                    "className": "text-center",
-                   // "orderable": false, 
+                   // "orderable": false,
                },
                {
                    "targets": [6],
                    "width": 40,
                    "className": "text-center",
-                   // "orderable": false, 
+                   // "orderable": false,
                },
            ],
            responsive: true
        });
 
-       
-   });       
 
-   $(document).ready(function() {  
-      $('#tbprak1').dataTable({        
+   });
+
+   $(document).ready(function() {
+      $('#tbprak1').dataTable({
            "lengthChange": false,
            "columnDefs": [{
                    "targets": [0],
                    "width": 15,
                    "className": "text-center",
-                   // "orderable": false, 
+                   // "orderable": false,
                },
                {
                    "targets": [1],
                    "width": 50,
                    "className": "text-center",
-                   // "orderable": false, 
+                   // "orderable": false,
                },
                {
                    "targets": [2],
                    "width": 50,
-                   // "orderable": false, 
+                   // "orderable": false,
                },
                {
                    "targets": [3],
                    "width": 110,
                    "className": "text-center",
-                   // "orderable": false, 
+                   // "orderable": false,
                },
            ],
            responsive: true
        });
-   });   
+   });
 </script>

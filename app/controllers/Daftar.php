@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Daftar extends CI_Controller {
 
-	
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -19,17 +19,16 @@ class Daftar extends CI_Controller {
 	 * @return [type] [description]
 	 */
 	public function index()
-	{	
+	{
 		$id = $this->session->userdata('nim');
 		if($id) {
 			$condition = array('NIM_TBUSER'=> $id);
 			$data['users'] = $this->info_model->get_user($id);
 			$data['model'] = $this->info_model->get_all_with_relation($id);
-			$data['models'] = $this->daftar_model->get_praktikum();			
+			$data['models'] = $this->daftar_model->get_praktikum();
 			$data['jadprak'] = $this->daftar_model->getJadwalPembukaan();
 			$data['openprak'] = $this->daftar_model->getProcJadwalPembukaan();
 
-				
 			$this->template->set_navbar('templates/navbar-main');
 			$this->template->load('main', 'daftar/index', $data);
 		} else {
@@ -66,7 +65,7 @@ class Daftar extends CI_Controller {
 		        );
 		       echo "<br /><pre>";
 		       print_r($data);
-		       echo "<pre>";		    
+		       echo "<pre>";
 		   }
 
 		    $res = $this->daftar_model->create($data);
@@ -90,15 +89,15 @@ class Daftar extends CI_Controller {
 	 * @return [type] [description]
 	 */
 	public function delete()
-	{	
+	{
 		$id = $this->uri->segment(3);
 		if($id) {
 			$res = $this->daftar_model->delete($id);
-			
+
 			if($res) {
-				$this->session->set_flashdata('message_success1', "Kriteria berhasil dihapus");			
+				$this->session->set_flashdata('message_success1', "Kriteria berhasil dihapus");
 			} else {
-				$this->session->set_flashdata('message_danger', "Kriteria gagal dihapus");			
+				$this->session->set_flashdata('message_danger', "Kriteria gagal dihapus");
 			}
 		} else {
 			$this->session->set_flashdata('message_danger', "System Error");
@@ -108,7 +107,7 @@ class Daftar extends CI_Controller {
 	}
 
 	public function cetak_formulir()
-	{			
+	{
 		$id = $this->session->userdata('nim');
 		$users = $this->info_model->get_user($id);
 		foreach ($users as $row){
@@ -121,14 +120,14 @@ class Daftar extends CI_Controller {
 				$control = $this->router->fetch_class();
 				$method = $this->router->fetch_method();
 				helper_log("/".$control."/".$method);
-				
-				ob_start(); 		
+
+				ob_start();
 				global $title;
 				$fpdf = new PDF_1('L','mm','A5');
 				$fpdf->SetTitle($title);
 				$fpdf->SetTitle('Cetak Formulir Pendaftaran-' . $this->session->userdata('nim'));
-				$fpdf->AddPage();	
-				$w = $fpdf->Image('assets/files/assets/images/Screenshot_2.jpg',9,1,194); 
+				$fpdf->AddPage();
+				$w = $fpdf->Image('assets/files/assets/images/Screenshot_2.jpg',9,1,194);
 				$fpdf->Cell(195,2,$w,0,1,'C');
 				$fpdf->Ln(27);
 
@@ -143,7 +142,7 @@ class Daftar extends CI_Controller {
 
 			        $fpdf->Cell(45,6,'NIM',0,0,'L');
 					$fpdf->Cell(5,6,':',0,0,'C');
-			        $fpdf->Cell(115,6,$user->NIM_TBUSER,0,1,'L');  
+			        $fpdf->Cell(115,6,$user->NIM_TBUSER,0,1,'L');
 
 			        $fpdf->Cell(45,6,'KELAS',0,0,'L');
 					$fpdf->Cell(5,6,':',0,0,'C');
@@ -164,7 +163,7 @@ class Daftar extends CI_Controller {
 					$fpdf->SetFont('Times','B',12);
 		            $fpdf->Cell(15,6,'NO.',1,0,'C');
 		            $fpdf->Cell(30,6,'KODE',1,0,'C');
-		            $fpdf->Cell(65,6,'NAMA PRAKTIKUM',1,0,'C');            
+		            $fpdf->Cell(65,6,'NAMA PRAKTIKUM',1,0,'C');
 		            $fpdf->Cell(40,6,'SEMESTER',1,0,'C');
 		            $fpdf->Cell(41,6,'BIAYA',1,1,'C');
 		            $i = 1;
@@ -190,10 +189,10 @@ class Daftar extends CI_Controller {
 
 					$fpdf->Ln(3);
 					$fpdf->SetFont('Times','',10);
-					$fpdf->Cell(60,4,'*Halaman 1 untuk diserahkan ke laboratorium',0,0,'L');					
+					$fpdf->Cell(60,4,'*Halaman 1 untuk diserahkan ke laboratorium',0,0,'L');
 					$fpdf->SetFont('Times','',12);
 					$fpdf->Cell(70,4,'',0,0,'C');
-			        $fpdf->Cell(61,4,"Surabaya, ".date('d-m-Y'),0,1,'C');	        
+			        $fpdf->Cell(61,4,"Surabaya, ".date('d-m-Y'),0,1,'C');
 					$fpdf->SetFont('Times','',10);
 					$fpdf->Cell(70,4,'*Halaman 2 untuk mahasiswa',0,0,'L');
 					$fpdf->Cell(60,4,'',0,0,'C');
@@ -205,9 +204,9 @@ class Daftar extends CI_Controller {
 
 			        $fpdf->Ln(10);
 				    $fpdf->Cell(60,5,'',0,0,'C');
-				        
+
 					// $fpdf->Cell(80,5,'',0,0,'C');
-					$w1 = $fpdf->Image(('assets/files/assets/images/Screenshot_1.jpg'),151,130,40); 
+					$w1 = $fpdf->Image(('assets/files/assets/images/Screenshot_1.jpg'),151,130,40);
 					$fpdf->Cell(61,5,$w1,0,1,'C');
 					// $fpdf->Cell(40, 5, $fpdf->Image(base_url('assets/files/assets/images/Screenshot_1.jpg'), $fpdf->GetX(), $fpdf->GetY(), 40.78), 1, 1, 'C', false );
 					// $fpdf->Cell(61,5,'( .............................................. )',0,1,'C');
@@ -217,8 +216,8 @@ class Daftar extends CI_Controller {
 
 				$fpdf->AddPage();
 				$fpdf->SetTitle($title);
-				$fpdf->SetTitle('Cetak Formulir Pendaftaran - ' . $this->session->userdata('nim'));	
-				$w = $fpdf->Image(('assets/files/assets/images/Screenshot_2.jpg'),9,1,194); 
+				$fpdf->SetTitle('Cetak Formulir Pendaftaran - ' . $this->session->userdata('nim'));
+				$w = $fpdf->Image(('assets/files/assets/images/Screenshot_2.jpg'),9,1,194);
 				$fpdf->Cell(195,2,$w,0,1,'C');
 				$fpdf->Ln(27);
 
@@ -233,7 +232,7 @@ class Daftar extends CI_Controller {
 
 			        $fpdf->Cell(45,6,'NIM',0,0,'L');
 					$fpdf->Cell(5,6,':',0,0,'C');
-			        $fpdf->Cell(115,6,$user->NIM_TBUSER,0,1,'L');  
+			        $fpdf->Cell(115,6,$user->NIM_TBUSER,0,1,'L');
 
 			        $fpdf->Cell(45,6,'KELAS',0,0,'L');
 					$fpdf->Cell(5,6,':',0,0,'C');
@@ -254,7 +253,7 @@ class Daftar extends CI_Controller {
 					$fpdf->SetFont('Times','B',12);
 		            $fpdf->Cell(15,6,'NO.',1,0,'C');
 		            $fpdf->Cell(30,6,'KODE',1,0,'C');
-		            $fpdf->Cell(65,6,'NAMA PRAKTIKUM',1,0,'C');            
+		            $fpdf->Cell(65,6,'NAMA PRAKTIKUM',1,0,'C');
 		            $fpdf->Cell(40,6,'SEMESTER',1,0,'C');
 		            $fpdf->Cell(41,6,'BIAYA',1,1,'C');
 		            $i = 1;
@@ -288,14 +287,14 @@ class Daftar extends CI_Controller {
 				$fpdf->Cell(70,4,'',0,0,'C');
 			    $fpdf->Cell(65,4,"MAHASISWA",0,1,'C');
 
-			    $w1 = $fpdf->Image(('assets/files/assets/images/Screenshot_1.jpg'),18,130,40); 
-			    $w2 = $fpdf->Image(('assets/files/assets/images/Screenshot_1.jpg'),158,130,40); 
+			    $w1 = $fpdf->Image(('assets/files/assets/images/Screenshot_1.jpg'),18,130,40);
+			    $w2 = $fpdf->Image(('assets/files/assets/images/Screenshot_1.jpg'),158,130,40);
 				$fpdf->Cell(61,5,$w1,0,1,'C');
 				$fpdf->Cell(61,5,$w2,0,1,'C');
 				} else {
 					$this->session->set_flashdata('message_danger', "System Error");
 					redirect('depan');
-				}	
+				}
 
 				$fileName = 'Cetak Formulir Pendaftaran-'.$this->session->userdata('nim').'.pdf';
 		        $fpdf->Output($fileName,'I');

@@ -195,7 +195,7 @@
 
                 $('#large-Modal').modal('show'); // show bootstrap modal when complete loaded
                 $('.modal-title').text('Ubah Data Pembukaan Praktikum'); // Set Title to Bootstrap modal title
-                $( ".subm" ).html('<i class="ti-write"> Ubah</i>');
+                $( ".subm" ).html('<i class="ti-write"></i>Ubah');
                 // $('.subm').text('Ubah'); // Set Title to Button modal title
 
             },

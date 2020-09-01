@@ -311,7 +311,7 @@
         <div class="modal-footer">
           <!-- <button class="btn btn-grd-info btn-custom" type="submit"><i class="ti-plus"> Ubah</i></button> -->
           <button class="btn btn-grd-info btn-custom" type="submit"><i class="ti-plus"></i>Ubah</button>
-          <button type="button" class="btn btn-grd-danger btn-custom" data-dismiss="modal">&nbsp;&nbsp;<i class="ti-na"> Batal</i>&nbsp;&nbsp;</button>
+          <button type="button" class="btn btn-grd-danger btn-custom" data-dismiss="modal">&nbsp;&nbsp;<i class="ti-na"></i>Batal&nbsp;&nbsp;</button>
         </div>
       </form>
     </div>

@@ -75,6 +75,16 @@ ubah password,
 	  str: 1234554321
 	  md5: b0f8b3e58f093359fe1af416b5ea8ed6
 
+	- username: 1914322001
+	- role: mahasiswa
+	- old password:
+	  md5: 66ee75c85e4cbe2c7d4304e830ba9868
+	- new password:
+	  str: 1234554321
+	  md5: b0f8b3e58f093359fe1af416b5ea8ed6
+
+
+
 
 
 3:01 PM 8/27/2020
@@ -310,10 +320,12 @@ C:\xampp\htdocs\labti\app\views\info\index.php
 	line: 84
 	text: '<i class="ti-zip"> Cetak Transkrip</i>',
 
+
 C:\xampp\htdocs\labti\app\controllers\Jadwal.php
 	line: 117 - 118
 	<a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="edit_person('."'".$field->NO_JADWAL_PRAKTIKUM."'".')"><i class="ti-pencil-alt"></i>Ubah</a>
 	<a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="delete_person('."'".$field->NO_JADWAL_PRAKTIKUM."'".')" ><i class="ti-brush-alt"></i>Hapus</a>
+
 
 C:\xampp\htdocs\labti\app\controllers\Pembukaan_praktikum.php
 	line: 71 - 73
@@ -321,12 +333,17 @@ C:\xampp\htdocs\labti\app\controllers\Pembukaan_praktikum.php
 	<a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="edit_person('."'".$field->NO_JADWAL_PEMBUKAAN."'".')"><i class="ti-pencil-alt"></i>Ubah</a>
 	<a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="delete_person('."'".$field->NO_JADWAL_PEMBUKAAN."'".')"><i class="ti-brush-alt"></i>Hapus</a>
 
+
 C:\xampp\htdocs\labti\app\views\pembukaan-praktikum\tambah-data-praktikum.php
 	line: 366
 	text: '<i class="ti-arrow-left"></i>Kembali', //'<i class="ti-arrow-left"> Kembali</i>',
 
 	line: 146
 	<a class="dropdown-item waves-light waves-effect" href="<?php echo site_url('pembukaan_praktikum/hapus/'.$row->ID_JADWAL_PEMBUKAAN_PRAKTIKUM);?>" data-confirm="Yakin untuk menghapus praktikum <?php echo ucwords($row->NAMA_PRAKTIKUM); ?>"><i class="ti-brush-alt"></i>Hapus</a>
+
+	line: 314
+	<button type="button" class="btn btn-grd-danger btn-custom" data-dismiss="modal">&nbsp;&nbsp;<i class="ti-na"></i>Batal&nbsp;&nbsp;</button>
+
 
 C:\xampp\htdocs\labti\app\views\validasi\index.php
 	line: 86
@@ -336,8 +353,28 @@ C:\xampp\htdocs\labti\app\views\validasi\index.php
 	'<button class="btn btn-grd-info btn-custom subm" type="submit" ><i class="ti-write"></i>Validasi</button>
 	<button type="button" class="btn btn-grd-danger btn-custom" data-dismiss="modal">&nbsp;&nbsp;<i class="ti-na"></i>Batal&nbsp;&nbsp;</button>';
 
+
 C:\xampp\htdocs\labti\app\controllers\Praktikum.php
 	line: 68 - 69
 	<a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="edit_person('."'".$field->ID_PRAKTIKUM."'".')"><i class="ti-pencil-alt"></i>Ubah</a>
 	<a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="delete_person('."'".$field->ID_PRAKTIKUM."'".')"><i class="ti-brush-alt"></i>Hapus</a>
+
+
+C:\xampp\htdocs\labti\app\controllers\Mahasiswa.php
+	line: 88
+	<a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="delete_person('."'".$field->ID_TBUSER."'".')"><i class="ti-brush-alt"></i>Hapus</a>
+
+
+C:\xampp\htdocs\labti\app\views\daftar\index.php
+	line: 302
+	text: '<i class="ti-files"></i>Formulir Pendaftaran',// text: '<i class="ti-files"> Formulir Pendaftaran</i>',
+
+	line: 309
+	text: '<i class="ti-zip"></i>Cetak Formulir Pendaftaran',// text: '<i class="ti-zip"> Cetak Formulir Pendaftaran</i>',
+
+
+C:\xampp\htdocs\labti\app\views\pembukaan-praktikum\index.php
+	line: 198
+	$( ".subm" ).html('<i class="ti-write"></i>Ubah');
+
 

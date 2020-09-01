@@ -85,7 +85,7 @@ class Mahasiswa extends CI_Controller {
 					    <button class="btn btn-default dropdown-toggle waves-effect waves-light btn-mini" type="button" id="dropdown-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="ti-view-list-alt"></i></button>
 					    <div class="dropdown-menu" aria-labelledby="dropdown-2" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
 					       <!--<a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="edit_person('."'".$field->ID_TBUSER."'".')" disabled><i class="ti-pencil-alt"> Ubah</i></a>-->
-					        <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="delete_person('."'".$field->ID_TBUSER."'".')"><i class="ti-brush-alt"> Hapus</i></a>
+					        <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="delete_person('."'".$field->ID_TBUSER."'".')"><i class="ti-brush-alt"></i>Hapus</a>
 					    </div>
 					</div>';
 			$data[] = $row;
