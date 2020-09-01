@@ -336,3 +336,8 @@ C:\xampp\htdocs\labti\app\views\validasi\index.php
 	'<button class="btn btn-grd-info btn-custom subm" type="submit" ><i class="ti-write"></i>Validasi</button>
 	<button type="button" class="btn btn-grd-danger btn-custom" data-dismiss="modal">&nbsp;&nbsp;<i class="ti-na"></i>Batal&nbsp;&nbsp;</button>';
 
+C:\xampp\htdocs\labti\app\controllers\Praktikum.php
+	line: 68 - 69
+	<a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="edit_person('."'".$field->ID_PRAKTIKUM."'".')"><i class="ti-pencil-alt"></i>Ubah</a>
+	<a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="delete_person('."'".$field->ID_PRAKTIKUM."'".')"><i class="ti-brush-alt"></i>Hapus</a>
+

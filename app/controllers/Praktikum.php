@@ -3,12 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Praktikum extends CI_Controller {
 
-	
+
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->library('template');
-		// $this->load->helper('text'); 
+		// $this->load->helper('text');
 	}
 
 	/**
@@ -16,28 +16,28 @@ class Praktikum extends CI_Controller {
 	 * @return [type] [description]
 	 */
 	public function index()
-	{	
+	{
 		$data['models']=$this->praktikum_model->tampil();
 		if($this->session->userdata('is_logged_in'))
 		{
 			redirect('depan');
-		} else 
+		} else
 		{
-			
+
 			$this->template->set_navbar('templates/navbar');
 			$this->template->load('front', 'praktikum/index',$data);
 		}
 	}
 
 	public function index_prak()
-	{	
+	{
 		$control = $this->router->fetch_class();
 		$method = $this->router->fetch_method();
 		helper_log("/".$control."/".$method);
-		
+
 		$id = $this->session->userdata('nim');
 		if($this->session->userdata('level') == "admin")
-		{	
+		{
 			$condition = array('NIM_TBUSER'=> $id);
 			$data['users'] = $this->info_model->get_user($id);
 			$data['models'] = $this->jadwal_model->get_all_with_relation();
@@ -65,8 +65,8 @@ class Praktikum extends CI_Controller {
 			$row[] = '<div class="dropdown-default dropdown open">
 					    <button class="btn btn-default dropdown-toggle waves-effect waves-light btn-mini" type="button" id="dropdown-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="ti-view-list-alt"></i></button>
 					    <div class="dropdown-menu" aria-labelledby="dropdown-2" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-					        <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="edit_person('."'".$field->ID_PRAKTIKUM."'".')"><i class="ti-pencil-alt"> Ubah</i></a>
-					        <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="delete_person('."'".$field->ID_PRAKTIKUM."'".')"><i class="ti-brush-alt"> Hapus</i></a>
+					        <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="edit_person('."'".$field->ID_PRAKTIKUM."'".')"><i class="ti-pencil-alt"></i>Ubah</a>
+					        <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="delete_person('."'".$field->ID_PRAKTIKUM."'".')"><i class="ti-brush-alt"></i>Hapus</a>
 					    </div>
 					</div>';
 
@@ -117,7 +117,7 @@ class Praktikum extends CI_Controller {
 				'SMST_PRAKTIKUM' => $this->input->post('SMST_PRAKTIKUM'),
 				'BIAYA_PRAKTIKUM' => $this->input->post('BIAYA_PRAKTIKUM'),
 			);
-		
+
 		$res = $this->praktikum_model->update(array('ID_PRAKTIKUM' => $this->input->post('ID_PRAKTIKUM')), $data);
 
 		if ($res) {
@@ -130,7 +130,7 @@ class Praktikum extends CI_Controller {
 	}
 
 	public function delete($id)
-	{		
+	{
 		$res = $this->praktikum_model->delete($id);
 
 		if ($res) {
@@ -162,7 +162,7 @@ class Praktikum extends CI_Controller {
 			//username and password not match or invalid, set message error validation
 			$this->form_validation->set_message('check_auth', 'Invalid username or password');
             return FALSE;
-		} else 
+		} else
 		{
 			//username and password match, return user data
 			$userdata = array(
