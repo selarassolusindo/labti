@@ -97,7 +97,7 @@
                             </td>
                             <td style="text-align: center;">
                                 <?php if ($row->KETERANGAN_PESERTA == "mendaftar"): ?>
-                                  <a href="<?php echo site_url('daftar/delete/'.$row->ID_PESERTA);?>" class="btn hor-grd btn-grd-danger btn-mini" data-confirm="Yakin untuk menghapus praktikum <?php echo ucwords($row->NAMA_PRAKTIKUM); ?>"><i class="ti-brush-alt"> Hapus</i></a>
+                                  <a href="<?php echo site_url('daftar/delete/'.$row->ID_PESERTA);?>" class="btn hor-grd btn-grd-danger btn-mini" data-confirm="Yakin untuk menghapus praktikum <?php echo ucwords($row->NAMA_PRAKTIKUM); ?>"><i class="ti-brush-alt"></i>Hapus</a>
                                 <?php else: ?>
                                   -
                                 <?php endif; ?>
