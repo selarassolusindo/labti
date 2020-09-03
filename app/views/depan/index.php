@@ -1,11 +1,11 @@
-<?php 
-   defined('BASEPATH') OR exit('No direct script access allowed'); 
+<?php
+   defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
 <div class="page-body">
-  <?php 
+  <?php
     date_default_timezone_set('Asia/Jakarta');
-    if($this->session->userdata('level') == "mahasiswa"){ 
+    if($this->session->userdata('level') == "mahasiswa"){
   ?>
    <div class="row">
        <div class="col-md-12 col-xl-4">
@@ -34,7 +34,7 @@
                <div class="card-header">
                    <div class="card-header-left">
                        <h5>Kartu Hasil Praktikum</h5>
-                       <p class="p-t-10 m-b-0 text-muted">Cek nilai praktikum / cetak transkrip</p>                       
+                       <p class="p-t-10 m-b-0 text-muted">Cek nilai praktikum / cetak transkrip</p>
                    </div>
                </div>
                 <div class="card-block">
@@ -107,10 +107,10 @@
            </div>
        </div>
    </div>
-  <?php 
-    }elseif($this->session->userdata('level') == "admin"){ 
+  <?php
+    }elseif($this->session->userdata('level') == "admin"){
   ?>
-    
+
     <div class="row">
        <div class="col-md-6 col-xl-3">
            <div class="card widget-statstic-card borderless-card">
@@ -118,7 +118,7 @@
                <div class="card-header">
                    <div class="card-header-left">
                        <h5>Validasi</h5>
-                       <p class="p-t-10 m-b-0 text-muted">Validasi Pendaftaran Prak.</p>                       
+                       <p class="p-t-10 m-b-0 text-muted">Validasi Pendaftaran Prak.</p>
                    </div>
                </div>
                 <div class="card-block">
@@ -137,7 +137,7 @@
                <div class="card-header">
                    <div class="card-header-left">
                        <h5>Kelompok & Penilaian</h5>
-                       <p class="p-t-10 m-b-0 text-muted">Penilaian Peserta Prak.</p>                       
+                       <p class="p-t-10 m-b-0 text-muted">Penilaian Peserta Prak.</p>
                    </div>
                </div>
                 <div class="card-block">
@@ -194,7 +194,8 @@
       <div class="col-xl-12 col-md-3">
         <div class="card">
           <div class="card-header" align="center">
-            <h4>Grafik Pendaftaran Praktikum <br> Tahun Pelaksanaan : 2018, Periode 2</h4>
+            <!-- <h4>Grafik Pendaftaran Praktikum <br> Tahun Pelaksanaan : 2018, Periode 2</h4> -->
+            <h4>Grafik Pendaftaran Praktikum <br> Tahun Pelaksanaan : <?php echo $grafiks[0]->TAHUN_JADWAL_PEMBUKAAN ?>, Periode <?php echo $grafiks[0]->PERIODE_JADWAL_PEMBUKAAN ?></h4>
           </div>
           <div class="card-block">
             <canvas id="barChart" width="400" height="100"></canvas>
@@ -203,7 +204,7 @@
       </div>
     </div>
 
-  <?php 
+  <?php
     }else{
   ?>
 
@@ -252,7 +253,7 @@
       <div class="col-xl-12 col-md-3">
         <div class="card">
           <div class="card-header" align="center">
-            <h4>Grafik Pendaftaran Praktikum <br> Tahun Pelaksanaan : 2018, Periode 2</h4>
+            <h4>Grafik Pendaftaran Praktikum <br> Tahun Pelaksanaan : <?php echo $grafiks[0]->TAHUN_JADWAL_PEMBUKAAN ?>, Periode <?php echo $grafiks[0]->PERIODE_JADWAL_PEMBUKAAN ?></h4>
           </div>
           <div class="card-block">
             <canvas id="barChart" width="400" height="100"></canvas>
@@ -261,7 +262,7 @@
       </div>
     </div>
 
-  <?php 
+  <?php
     }
   ?>
 
@@ -271,11 +272,21 @@
   new Chart(document.getElementById("barChart"), {
     type: 'horizontalBar',
     data: {
-      labels: ["PTI", "Algoritma & Pemrograman", "Jaringan Komputer"],
+      //labels: ["PTI", "Algoritma & Pemrograman", "Jaringan Komputer"],
+      labels: [
+        <?php foreach ($grafiks as $grafik) {
+          echo '"' . $grafik->NAMA_PRAKTIKUM . '",';
+        } ?>
+      ],
       datasets: [{
         label: "Jumlah Peserta ",
         backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f"],
-        data: [81, 87, 92]
+        //data: [81, 87, 92]
+        data: [
+          <?php foreach ($grafiks as $grafik) {
+            echo $grafik->jumlah_peserta . ',';
+          } ?>
+        ]
       }]
     },
     options: {
@@ -284,7 +295,7 @@
       },
       title: {
         display: false,
-        text: 'Predicted world population (millions) in 2050'
+        text: 'Grafik Pendaftaran Praktikum' //'Predicted world population (millions) in 2050'
       },
       scales: {
         xAxes: [{
@@ -302,9 +313,9 @@
 
 <script type="text/javascript">
    var table;
-   $(document).ready(function() {   
+   $(document).ready(function() {
        //datatables
-       table = $('#simpletable').DataTable({ 
+       table = $('#simpletable').DataTable({
           "searching": false,
           "bPaginate": false,
           "bLengthChange": false,
@@ -313,5 +324,5 @@
           "bAutoWidth": false
        });
 
-   }); 
+   });
 </script>

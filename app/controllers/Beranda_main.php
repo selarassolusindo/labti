@@ -17,7 +17,7 @@ class Beranda_main extends CI_Controller {
 	 * @return [type] [description]
 	 */
 	public function index()
-	{	
+	{
 		$id = $this->session->userdata('nim');
 		if($id) {
 			$condition = array('NIM_TBUSER'=> $id);
@@ -30,12 +30,14 @@ class Beranda_main extends CI_Controller {
 			}
 			$data['praktikum']= $this->pembukaan_praktikum_model->get_open_prak_by($no);
 
+			$data['grafiks'] = $this->jadwal_model->get_data_grafik();
+
 			$this->template->set_navbar('templates/navbar-main');
 			$this->template->load('main', 'depan/index', $data);
 		} else {
 			$this->session->set_flashdata('message_danger', "System Error");
 			redirect('depan');
-		}	
+		}
 	}
 
 	/**
