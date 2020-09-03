@@ -34,7 +34,7 @@ request update:
 
 	- 8. dashboard,
 	  grafik: ambil data terbaru
-	  [ ] -
+	  [x] - 9:44 PM 9/3/2020
 
 	- 9. kelompok & penilaian
 	  tambah combo untuk isi nilai A, B, C, D, E
