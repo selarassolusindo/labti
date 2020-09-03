@@ -32,8 +32,7 @@ request update:
 	- 7. view transkrip
 	  [ ] -
 
-	- 8. dashboard,
-	  grafik: ambil data terbaru
+	- 8. dashboard, grafik: ambil data terbaru
 	  [x] - 9:44 PM 9/3/2020
 
 	- 9. kelompok & penilaian
@@ -385,4 +384,23 @@ C:\xampp\htdocs\labti\app\views\daftar\index.php
 	line: 100
 	<a href="<?php echo site_url('daftar/delete/'.$row->ID_PESERTA);?>" class="btn hor-grd btn-grd-danger btn-mini" data-confirm="Yakin untuk menghapus praktikum <?php echo ucwords($row->NAMA_PRAKTIKUM); ?>"><i class="ti-brush-alt"></i>Hapus</a>
 
+
+
+----------------------------------------
+8. dashboard, grafik: ambil data terbaru
+----------------------------------------
+C:\xampp\htdocs\labti\app\controllers\Beranda_main.php
+	line: 33
+	$data['grafiks'] = $this->jadwal_model->get_data_grafik();
+
+
+C:\xampp\htdocs\labti\app\models\Jadwal_model.php
+	line: 256
+	public function get_data_grafik() {
+
+C:\xampp\htdocs\labti\app\views\depan\index.php
+	line: 276
+	line: 285
+	line: 256
+	line: 198
 
