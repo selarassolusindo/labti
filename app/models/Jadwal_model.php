@@ -268,6 +268,9 @@ class Jadwal_model extends CI_Model {
 			    left join jadwal_pembukaan d on a.IDPERIODE_JADWAL_PRAKTIKUM = d.NO_JADWAL_PEMBUKAAN
 			where
 				IDPERIODE_JADWAL_PRAKTIKUM = (select max(IDPERIODE_JADWAL_PRAKTIKUM) as id_jadwal_pembukaan from jadwal_pelaksanaan)
+				and b.THNPELAKSANAAN_PESERTA = d.TAHUN_JADWAL_PEMBUKAAN
+		    and b.PERIODE_PESERTA = d.PERIODE_JADWAL_PEMBUKAAN
+		    and b.KETERANGAN_PESERTA = 'peserta'
 			group by
 				a.PRAKTIKUM_JADWAL_PRAKTIKUM
 		';
