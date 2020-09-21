@@ -249,7 +249,7 @@ ubah masing-masing file database.php,
 
 
 --------------------------------------------------------------------------
-99. ubah setting icon class di button "[crud] [function]" pada setiap form 
+99. ubah setting icon class di button "[crud] [function]" pada setiap form
 --------------------------------------------------------------------------
 C:\xampp\htdocs\labti\app\views\praktikum\index-main.php
 	line: 132
@@ -281,7 +281,7 @@ C:\xampp\htdocs\labti\app\views\pembukaan-praktikum\index.php
 	<!-- <button class="btn btn-grd-info btn-custom subm" type="submit" onclick="save(); return false;"><i class="ti-plus"> Tambah</i></button>  -->
 
 	line: 86
-	<button class="btn btn-grd-info btn-custom subm" type="submit" onclick="save(); return false;"><i class="ti-plus"></i>Tambah</button> 
+	<button class="btn btn-grd-info btn-custom subm" type="submit" onclick="save(); return false;"><i class="ti-plus"></i>Tambah</button>
 
 	line: 87
 	<!-- <button type="button" class="btn btn-grd-danger btn-custom" data-dismiss="modal">&nbsp;&nbsp;<i class="ti-na"> Batal</i>&nbsp;&nbsp;</button> -->
@@ -298,7 +298,7 @@ C:\xampp\htdocs\labti\app\views\pembukaan-praktikum\tambah-data-praktikum.php
 	<!-- <button class="btn btn-grd-info btn-custom" type="submit"><i class="ti-plus"> Tambah</i></button>  -->
 
 	line: 196
-	<button class="btn btn-grd-info btn-custom" type="submit"><i class="ti-plus"></i>Tambah</button> 
+	<button class="btn btn-grd-info btn-custom" type="submit"><i class="ti-plus"></i>Tambah</button>
 
 	line: 312
 	<!-- <button class="btn btn-grd-info btn-custom" type="submit"><i class="ti-plus"> Ubah</i></button> -->
@@ -404,3 +404,4 @@ C:\xampp\htdocs\labti\app\views\depan\index.php
 	line: 256
 	line: 198
 
+x
