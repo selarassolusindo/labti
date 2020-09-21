@@ -219,8 +219,8 @@
 
         <?php if($this->session->userdata('level') == "dosen"): ?>
         <ul class="pcoded-item pcoded-left-item">
-            <li class="<?php //if($this->uri->uri_string() == 'peserta') { echo 'active'; } ?>">
-                <a href="<?php //echo site_url('peserta');?>">
+            <li class="<?php if($this->uri->uri_string() == 'info') { echo 'active'; } ?>">
+                <a href="<?php echo site_url('info');?>">
                 <span class="pcoded-micon"><i class="ti-calendar"></i><b>KL</b></span>
                 <span class="pcoded-mtext">Kelompok</span>
                 <span class="pcoded-mcaret"></span>
